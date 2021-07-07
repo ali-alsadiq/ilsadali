@@ -1,0 +1,42 @@
+// Type
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
+/* 
+
+font-family: 'Sarabun', sans-serif;
+
+*/
+
+
+body {
+    font-family:'Courier New', Courier, monospace;
+    color: #FFFFFF;
+}
+
+h1, h2, h3, nav a {
+    font-family: 'Noto Sans JP', sans-serif;}
+
+h1 {
+    font-weight: 300;
+}
+
+
+.letter{
+    padding: 0;
+    margin: 0;
+}
+.intro{
+    text-align: center;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    font-size: 1.5rem;
+}
+.project{
+    
+    margin-bottom: 40px;
+    display: block;
+}
+
+.project-hide{
+    transition:20ms ;
+}
