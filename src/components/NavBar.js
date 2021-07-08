@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import { motion } from "framer-motion";
+import * as FaIcons from "react-icons/fa";
 
 
   
@@ -139,7 +140,7 @@ function NavBar() {
     return (
         <>
             <div className ='navbar'>
-                <Link to='/'>
+                <NavLink to='/'>
                     <motion.svg className="logo"  
                         variants={logo}
                         initial='hidden'
@@ -152,7 +153,7 @@ function NavBar() {
                         <motion.path variants={logoPath} className="cls-1" d="M1358.7,379.24a3.14,3.14,0,0,1,1-2.43,3.8,3.8,0,0,1,2.69-.95,3.9,3.9,0,0,1,2.72.93,3.43,3.43,0,0,1,0,4.91,4.4,4.4,0,0,1-5.41,0A3.18,3.18,0,0,1,1358.7,379.24Z" transform="translate(-1277.6 -356.83)"/>
                         <motion.path variants={logoPath} className="cls-1" d="M1380.51,381.82a.23.23,0,0,0-.32.17,1.57,1.57,0,0,1-.39.89,1.48,1.48,0,0,1-1.09.34,1.45,1.45,0,0,1-1.18-.47,2.58,2.58,0,0,1-.45-1.51l-.25-4.41h0v-.33a1.94,1.94,0,0,1,.35-1.3,1.57,1.57,0,0,1,1.17-.38c.77,0,1.31.55,1.64,1.64a6.67,6.67,0,0,0,.44,1.23,4.56,4.56,0,0,0,2.1,2.06,7.55,7.55,0,0,0,3.43.72,6.44,6.44,0,0,0,4-1.16,3.58,3.58,0,0,0,1.53-3,3.19,3.19,0,0,0-.94-2.41,4.86,4.86,0,0,0-2.74-1.18l-2.82-.38a11.26,11.26,0,0,1-5.74-2.07,5.3,5.3,0,0,1-1.81-4.28,6.07,6.07,0,0,1,2.41-4.88,9.72,9.72,0,0,1,8.2-1.7,17.36,17.36,0,0,1,2.35.75.23.23,0,0,0,.31-.16.8.8,0,0,1,.27-.49,1.5,1.5,0,0,1,.91-.21,1.93,1.93,0,0,1,1.16.25c.17.13,3.16-2.1,4.37-2.67a.23.23,0,0,1,.3.31l-4,7.46a.2.2,0,0,0,0,.11v.13a1.37,1.37,0,0,1-.38,1,1.5,1.5,0,0,1-1.07.38c-.67,0-1.19-.47-1.55-1.4v0a5.17,5.17,0,0,0-.52-1.18v0a3.94,3.94,0,0,0-1.8-1.45,6.67,6.67,0,0,0-2.68-.52,5.85,5.85,0,0,0-3.74,1.14,3.67,3.67,0,0,0-1.43,3,2.75,2.75,0,0,0,1.07,2.28,6.86,6.86,0,0,0,3.28,1.14l3,.38a8.74,8.74,0,0,1,5,2,5.63,5.63,0,0,1,1.67,4.28,6.27,6.27,0,0,1-2.38,5.13,9.8,9.8,0,0,1-6.35,1.93,11.37,11.37,0,0,1-2.72-.33A15.91,15.91,0,0,1,1380.51,381.82Z" transform="translate(-1277.6 -356.83)"/>
                     </motion.svg>                                    
-                </Link>
+                </NavLink>
 
                 <button className='menu-bars'>
                     <motion.svg
@@ -174,13 +175,22 @@ function NavBar() {
                     {SidebarData.map((item, index)=>{
                         return(
                             <li key={index} className={item.cName}>
-                                <Link to={item.path}>
+                                <NavLink to={item.path}>
                                     {item.icon}
                                     <span>{item.title}</span>
-                                </Link>
+                                </NavLink>
                             </li>
                         )
                     })}
+                    <a href="https://github.com/ali-alsadiq">
+                        <FaIcons.FaGithub className="social-icon"></FaIcons.FaGithub>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ilsadali/">
+                        <FaIcons.FaLinkedinIn className="social-icon"></FaIcons.FaLinkedinIn>
+                    </a>
+                    {/* <a href="https://codepen.io/ali-alsadiq">
+                        <FaIcons.FaCodepen className="social-icon"></FaIcons.FaCodepen>
+                    </a> */}
                 </ul>
             </nav>
 

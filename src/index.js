@@ -7,7 +7,7 @@ import './styles/styles.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/">
       <App />
     </Router>
   </React.StrictMode>,
