@@ -19,10 +19,8 @@
     transition: 550ms;
 }
 .project-container{
-    width:80%;
     font-size: 1.5rem;
     text-align: center;
-    border: 1px solid orange;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.276);
     z-index:66;
@@ -31,7 +29,6 @@
     max-width: 700px;
 }
 .project-container:hover{
-    border: 2px solid rgb(255, 162, 0);
     cursor: pointer;
     color:rgb(255, 162, 0);
     background-color: rgba(0, 0, 0, 0.7);
@@ -83,7 +80,14 @@
     border-radius: 5px;
     @media only screen and (min-width: 550px) {
         height: 250px;
+    }   
+}
+.octupos-container{
+    max-height: 650px;
+    @media only screen and (min-width: 480px) {
+        max-height: 750px;
     }
-  
-    
+    @media only screen and (min-width: 600px) {
+        max-height: 900px;
+    }
 }

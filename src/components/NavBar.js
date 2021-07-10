@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import { motion } from "framer-motion";
 import * as FaIcons from "react-icons/fa";
 
-
-  
 
 const logo ={
     hidden: {
@@ -14,40 +12,40 @@ const logo ={
         color:'black'
     },
     visable:{
-        scale:2,
+        scale:1.6,
         y:0,
-        x:'50%',
-        opacity:1,
+        opacity:[0.5,0.7],
         padding:'0.5rem', 
         textAlign: 'center',
+        fill:'grey',
         transition:{
             type:'spring', 
             stiffness:80,
             mass: .6,
-            damping:3.7
+            damping:7
         }        
     },
     logoHover:{
-        opacity:[0,0.3,0.4,0.5,1] , 
-        originZ:0, 
-        rotateZ:[0,-3,3,0],
-        scale:[2.2,2.4], 
+        opacity:[0.6,1] , 
+        rotateZ:[-1,1],
+        scale:[1.5,1.6], 
         textShadow:'0px 0px 8px grey', 
         transition:{ 
-            duration: .35,
+            duration:1,
+            yoyo:2
         }
     }
 }
 const logoPath = {
     hidden:{
-        opacity:0,
         pathLength:0
     },
     visable:{
         opacity:1,
         pathLength:1,
         transition:{
-            duration:2,
+            delay:.5,
+            duration:2.3,
             ease: 'easeInOut'
         }
     }
@@ -56,12 +54,13 @@ const menuIcon = {
     hidden: {
         x:'50vh', 
         opacity:0,
-        color:'black'
+        fill:"rgb(176, 136, 61)",
     },
     visable:{
-        scale:1.2,
+        scale:1,
         x:0,
-        opacity:1,
+        opacity:.4,
+        fill:'grey',
         transition:{
             type:'spring', 
             stiffness:120,
@@ -70,12 +69,13 @@ const menuIcon = {
         }        
     },
     menuHover:{
-        opacity:[0.5,1,0.5] ,  
+        opacity:[0.3,0.6,0.3] , 
+        fill:"rgb(115, 115, 255)",
         originZ:0,
         rotateZ:[0,-5,-10,-5,5,10,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         transition:{ 
             repeat: Infinity,
-            duration: 1.5
+            duration: 1.2,
         }
     }
 }
@@ -146,7 +146,7 @@ function NavBar() {
                         initial='hidden'
                         animate='visable'
                         whileHover='logoHover' 
-                        id="Layer_1" data-name="Layer 1" style={{ marginLeft:' 50px' }} width="80" height="28" viewBox="0 0 120.17 27.8"  fill='none' stroke='#6C6C6C' stroke-miterlimit='10' stroke-width='0.09px'>
+                        id="Layer_1" data-name="Layer 1" style={{ marginLeft:' 50px' }} width="80" height="28" viewBox="0 0 120.17 27.8"  fill='none' stroke='rgb(176, 136, 61)' stroke-miterlimit='10' stroke-width='0.09px'>
                         <motion.path variants={logoPath} className="cls-1" d="M1288.77,364.16a1.19,1.19,0,0,0-.87-1.58,1.27,1.27,0,0,0-.28,0h-1a3,3,0,0,1-1.63-.32,1.17,1.17,0,0,1-.46-1.05,1.23,1.23,0,0,1,.41-1.07,4.81,4.81,0,0,1,2.23-.3h5.42a2.56,2.56,0,0,1,1.41.27,2.4,2.4,0,0,1,.68,1l7.37,18.43a.24.24,0,0,0,.22.15h.17a2.46,2.46,0,0,1,1.4.28,1.19,1.19,0,0,1,.38,1,1.31,1.31,0,0,1-.36,1.07,2.2,2.2,0,0,1-1.35.3h-5.17a3.61,3.61,0,0,1-1.85-.3,1.23,1.23,0,0,1-.41-1.07,1.13,1.13,0,0,1,.45-1,3.41,3.41,0,0,1,1.68-.29h0a1.19,1.19,0,0,0,1.17-1.39.84.84,0,0,0-.08-.27l-.86-2.12a1.2,1.2,0,0,0-1.11-.74h-8a1.19,1.19,0,0,0-1.12.78l-.77,2.15a1.19,1.19,0,0,0,.87,1.57,1.27,1.27,0,0,0,.28,0h.11a3.36,3.36,0,0,1,1.71.3,1.09,1.09,0,0,1,.46,1,1.27,1.27,0,0,1-.41,1.08,3.58,3.58,0,0,1-1.79.29h-5c-.82,0-4.7,2.42-5,2.22s2.95-3.07,2.95-3.59a1.22,1.22,0,0,1,.4-1,2.89,2.89,0,0,1,1.54-.28h.21a.23.23,0,0,0,.21-.15Zm1.33,8.47h4.32a1.19,1.19,0,0,0,1.18-1.2,1.32,1.32,0,0,0-.08-.44l-2.27-5.58a1.18,1.18,0,0,0-1.55-.65,1.14,1.14,0,0,0-.66.68l-2,5.59a1.18,1.18,0,0,0,.71,1.52A1.14,1.14,0,0,0,1290.1,372.63Z" transform="translate(-1277.6 -356.83)"/>
                         <motion.path variants={logoPath} className="cls-1" d="M1312,379.24a3.15,3.15,0,0,1,1-2.43,3.78,3.78,0,0,1,2.69-.95,3.92,3.92,0,0,1,2.72.93,3.44,3.44,0,0,1,0,4.91,4.4,4.4,0,0,1-5.41,0A3.18,3.18,0,0,1,1312,379.24Z" transform="translate(-1277.6 -356.83)"/>
                         <motion.path variants={logoPath} className="cls-1" d="M1338.87,372.38a.24.24,0,0,0,.44,0l3.87-11.28a2,2,0,0,1,.73-1,2.39,2.39,0,0,1,1.34-.31h3.12a1.2,1.2,0,0,1,.92.33,1.34,1.34,0,0,1,.32,1,1.14,1.14,0,0,1-.39,1,2.69,2.69,0,0,1-1.44.28h-.06a.22.22,0,0,0-.23.23l.51,16.84a.23.23,0,0,0,.23.23h.21a3.41,3.41,0,0,1,1.66.27,1.16,1.16,0,0,1,.42,1,1.41,1.41,0,0,1-.34,1,1.34,1.34,0,0,1-1,.35h-5.34a2.59,2.59,0,0,1-1.51-.31,1.26,1.26,0,0,1-.4-1.06,1.11,1.11,0,0,1,.48-1,4,4,0,0,1,1.82-.28h.59a.23.23,0,0,0,.23-.24l-.36-14.83a.23.23,0,0,0-.45-.07l-3.35,9.72a2.36,2.36,0,0,1-.7,1.11,2.17,2.17,0,0,1-1.26.3,2,2,0,0,1-1.22-.32,2.22,2.22,0,0,1-.68-1.09l-3.4-9.72a.23.23,0,0,0-.45.07l-.31,14.84a.23.23,0,0,0,.23.23h1a2.93,2.93,0,0,1,1.58.31,1.1,1.1,0,0,1,.46,1,1.28,1.28,0,0,1-.4,1.07,2.71,2.71,0,0,1-1.52.3h-5.33a1.33,1.33,0,0,1-1-.34,1.43,1.43,0,0,1-.33-1,1.14,1.14,0,0,1,.42-1,3.25,3.25,0,0,1,1.65-.28h.2a.22.22,0,0,0,.23-.22l.54-16.84a.23.23,0,0,0-.23-.24h-.07a2.64,2.64,0,0,1-1.44-.28,1.14,1.14,0,0,1-.41-1,1.3,1.3,0,0,1,.33-1,1.23,1.23,0,0,1,.93-.33h3.12a2.48,2.48,0,0,1,1.34.31,1.79,1.79,0,0,1,.71,1Z" transform="translate(-1277.6 -356.83)"/>
@@ -162,7 +162,7 @@ function NavBar() {
                         initial='hidden'
                         animate='visable'
                         whileHover='menuHover'
-                        width="40" height="60" viewBox="0 0 35.63 31.49"  fill='none' stroke='#6C6C6C' stroke-width='2' stroke-miterlimit='10'>
+                        width="40" height="60" viewBox="0 0 35.63 31.49"  fill='none' stroke='rgb(176, 136, 61)' stroke-width='2' stroke-miterlimit='10'>
                         <motion.rect variants={top} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="12.33" width="34.63" height="6.83" rx="3.42"/>
                         <motion.rect variants={center} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="24.16" width="34.63" height="6.83" rx="3.42"/>
                         <motion.rect variants={bottom} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="0.5" width="34.63" height="6.83" rx="3.42"/>

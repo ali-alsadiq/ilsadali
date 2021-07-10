@@ -1,7 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
+import React, {useEffect} from 'react';
+import { motion } from "framer-motion";
 import * as FaIcons from "react-icons/fa";
-import * as DiIcons from "react-icons/di";
-import * as SiIcons from "react-icons/si";
+import * as BiIcons from "react-icons/bi";
+import Octopus from '../components/Octopus'
+
 
 const line1 = "Hi, I’m Ali Alsadiq";
 const line2 = "Front-End Web Developer";
@@ -11,9 +13,10 @@ const sentence = {
     hidden: {opacity: 1},
     visable:{
         opacity:1,
+        y:'50hv',
         transition:{
-            delayChildren: 0.8,
-            staggerChildren: 0.025
+            delayChildren: 1.,
+            staggerChildren: 0.05
         }
     }
 }
@@ -26,14 +29,16 @@ const letter = {
 }
 
 function PageHome() {
+    useEffect(() => {
+        document.title = 'ilsadali';
+    });
     return (
         <>
-            <motion.section
+        <motion.section
             initial={{ y: '-100vh'}}
             animate={{ y:0 }}
             transition={{ type: 'spring', stiffness: 90, duration: 0.3, delay:.3  }}
             exit={{ y:'100vh', transition:{ ease: 'easeInOut', duration: 0.3} }}>
-            <h2>Page Home...</h2>
 
             <motion.p
             className="intro"
@@ -65,27 +70,20 @@ function PageHome() {
                 })}
                 <br></br>
             </motion.p>
-
-            <FaIcons.FaReact></FaIcons.FaReact>
-            <FaIcons.FaHtml5></FaIcons.FaHtml5>
-            <FaIcons.FaSass></FaIcons.FaSass>
-            <DiIcons.DiJavascript1></DiIcons.DiJavascript1>
-            <FaIcons.FaPhp></FaIcons.FaPhp>
-            <FaIcons.FaWordpress></FaIcons.FaWordpress>
-            <SiIcons.SiWoocommerce className="woo"></SiIcons.SiWoocommerce><br></br>
-            <DiIcons.DiCss3></DiIcons.DiCss3>
-            <FaIcons.FaLinkedinIn></FaIcons.FaLinkedinIn>
-            <FaIcons.FaCodepen></FaIcons.FaCodepen>
-            <FaIcons.FaGithub></FaIcons.FaGithub>
-            <SiIcons.SiAdobeillustrator></SiIcons.SiAdobeillustrator>
-            <SiIcons.SiAdobephotoshop></SiIcons.SiAdobephotoshop>
-            <SiIcons.SiAdobexd></SiIcons.SiAdobexd>
+            <Octopus />
+            <section className='home-social'>
+                <h4>Get in touch</h4>
+                <a href="https://github.com/ali-alsadiq">
+                    <FaIcons.FaGithub className="social-icon"></FaIcons.FaGithub>
+                </a>
+                <a href="https://www.linkedin.com/in/ilsadali/">
+                    <FaIcons.FaLinkedinIn className="social-icon"></FaIcons.FaLinkedinIn>
+                </a>
+                <a href='mailto:ali6254@gmail.com'><BiIcons.BiMailSend className='social-icon mail-icon'/></a>
+            </section >
             
-            </motion.section>
+        </motion.section>
         
-
-
-        {/* </motion.section> */}
     </>
     )
 }

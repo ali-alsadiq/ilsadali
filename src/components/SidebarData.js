@@ -1,6 +1,7 @@
 import React from 'react';
 import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
+import * as GrIcons from "react-icons/gr";
 
 export const SidebarData =[
     {
@@ -18,7 +19,7 @@ export const SidebarData =[
     {
         title: 'about',
         path:'/about',
-        icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
+        icon: <GrIcons.GrContactInfo />,
+        cName: 'nav-text info-icon'
     }
 ]

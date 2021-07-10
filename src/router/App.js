@@ -12,8 +12,8 @@ function App() {
     <>
     
       <div className="wrapper">
-        <Header />
         <main id="main-body">
+        <Header />
           <AnimatePresence exitBeforeEnter >
             <Switch location={location} key={location.key} >
               <Route path='/' exact ><PageHome /></Route>

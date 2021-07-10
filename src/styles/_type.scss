@@ -46,6 +46,7 @@ h1 {
     margin:20px;
     margin-right: 40px;
     color:rgb(167, 92, 216);
+
     &:hover{
         color:rgb(188, 130, 216);
     }
@@ -91,4 +92,86 @@ h1 {
     float: right;
     margin-right: 15px;
     transform: scale(1.75);
+}
+
+.project-links{
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    &:hover,
+    &:active{
+        color:rgb(217, 173, 255);
+    }
+      
+    
+    &:hover,
+    &:active{
+        color:rgb(217, 173, 255);
+    }
+    div{
+        background-color: black;
+        border: 1px solid rgb(255, 185, 255);
+        padding: 10px;
+        border-radius: 5px;
+        width:200px;
+        margin:10px auto;
+        display:block;
+        @media only screen and (min-width: 500px) {
+            display:inline-block;
+            margin:10px;
+        }
+        .social-icon{
+            margin:0 auto;
+            transform: scale(1.2);  
+            float: left; 
+            margin-left: 3px;    
+        }
+        text-align: center;
+    }
+}
+.project-info{
+    margin-top:25px;
+}
+.octupos{
+    max-width: 700px;
+    .cls-1{
+        fill:#a2356a;
+    }.cls-2{
+        fill:#e04790;
+    }.cls-3{
+        fill:#464656;
+    }.cls-4{
+        fill:#fff;
+    }.cls-5{
+        fill:#ee87a2;
+    }.cls-6{
+        fill:none;
+        stroke:#a2356a;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-width:1.08px;
+    }
+}
+.codeButton:hover{
+    cursor: pointer;
+}
+g text{
+    font-size:8px;
+}
+.mail-icon{
+    transform: scale(2.4);
+}
+
+.info-icon{
+
+    svg{
+        transform: scale(1.2);
+        path{
+            stroke:white;
+            color:'white';
+            fill:white;
+        }
+       
+    }
 }

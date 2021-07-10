@@ -1,34 +1,50 @@
-import React, {useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from "framer-motion";
+import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import LazyLoad from 'react-lazyload';
 import * as FaIcons from "react-icons/fa";
 import * as DiIcons from "react-icons/di";
 import * as SiIcons from "react-icons/si";
 import portfolioMockup from '../images/portfolioMockup.jpg'
+import * as RiIcons from "react-icons/ri";
 
-
+const projectsContainer ={
+    hidden:{
+        x: '-100vw'
+    },
+    visable:{ 
+        x:0,
+        transition:{
+            type: 'spring', 
+            stiffness: 90,
+            duration: 0.3, 
+            delay:0.3, 
+        }
+    },
+}
 const projectDiv = {
     hidden: {
-        opacity:0.3,
-        scale:2.2,
+        y:'-100vh',
+        scale:0.2,
     },
     visable:{
         y:0,
         opacity:1, 
-        scale:1,
+        scale:[0.2,0.25,0.26,0.27,0.3,0.35,0.4,0.45,1],
         transition:{
             duration:0.5,
-            type:'tween', 
-            ease:"easeInOut"
+            type:'spring', 
+            ease:"easeInOut",
         } 
     },
     exit:{
         y:'-100vh',
-        scale:[1,0.2],
-        height:0.2,
-        opacity:0,
+        scale:[1,0.2,0.19,0.18,0.17,0.16],
+        height:1,
+        opacity:[0.9,0.5,0],
         transition:{
-            duration:0.8,
+            type:'tween', 
+            duration:1,
             ease:"easeInOut"
         }
     }
@@ -43,7 +59,9 @@ const firstLine ={
         originZ:0,
         rotateZ:-45,
         transition:{
-            type:'spring'
+            type:'spring',
+            ease:"easeInOut"
+
         }
     }
 }
@@ -58,7 +76,7 @@ const secondLnie ={
         originZ:0,
         rotateZ:45,
         transition:{
-            type:'spring'
+            type:'spring',
         }
     }
 }  
@@ -82,10 +100,10 @@ const arrow ={
 }
 const icon ={
     hidden:{
-        opacity:0.8,
-        scale:4,
-        y:"-50vh",
-        x:'90vw',
+        opacity:0.7,
+        scale:3,
+        y:"-20vh",
+        x:'200vw',
     },
     visable:{
         opacity:1,
@@ -94,12 +112,11 @@ const icon ={
         y:0,
         scale:1.8,
         transition:{
-            delay:.5,
+            delay:.05,
             type:'spring',
-            stiffness: 80,
-            mass: .6,
-            damping:6,
-            duration:.2,
+            stiffness:55,
+            mass: 3,
+            damping:20
         }
     },
     hover:{
@@ -111,7 +128,9 @@ const icon ={
 
 
 function PageWork() {
-
+    useEffect(() => {
+        document.title = 'ilsadali | Work';
+    });
 
     const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
     const [isMovienaOpen, setIsMovienaOpen] = useState(false);
@@ -138,16 +157,15 @@ function PageWork() {
     return (
         <>
             <motion.section
-                initial={{ x: '-100vw'}}
-                animate={{ x:0 }}
-                transition={{ type: 'spring', stiffness: 90, duration: 0.3, delay:0.3}}
+                variants={projectsContainer}
+                initial='hidden'
+                animate='visable'
+                transition={{ type: 'spring', stiffness: 90, duration: 0.3, delay:0.3, when:'beforeChildren'}}
                 exit={{ x:'-100vw', transition:{ ease: 'easeInOut', duration:0.3} }}>
 
                 <motion.section className="project-section portfolio-section">
+
                     <motion.div  
-                        variants={projectDiv} 
-                        initial='hidden'
-                        animate='visable' 
                         className="project-container" 
                         onClick={togglePortfolio}>
 
@@ -159,10 +177,9 @@ function PageWork() {
                         <SiIcons.SiAdobeillustrator className='icon ai-icon'></SiIcons.SiAdobeillustrator>
                         <SiIcons.SiAdobephotoshop className='icon ps-icon'></SiIcons.SiAdobephotoshop>
                         <SiIcons.SiAdobexd className='icon xd-icon'></SiIcons.SiAdobexd>
+                       
                         <motion.svg 
                             variants={icon}
-                            initial="hidden"
-                            animate="visable"
                             className="icon arrow" stroke="currentColor" fill="none" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="12" cy="12" r="10"></circle>
                             <motion.polyline
@@ -184,35 +201,45 @@ function PageWork() {
                                 x1="12" y1="8" x2="12" y2="16">
                             </motion.line>
                         </motion.svg>
-                        {/* <FiIcons.FiArrowDownCircle className="icon arrow" />
-                        <FiIcons.FiXCircle className="icon x" /> */}
                     </motion.div>
 
                     <motion.div 
                         variants={projectDiv} 
-                        initial='hidden' 
                         animate={isPortfolioOpen ? 'visable' : 'exit'}                    
-                            className={isPortfolioOpen ? 'project' : 'project-hide'}>                  
+                            className={isPortfolioOpen ? 'project' : 'project-hide'}>  
+                            <h3>Project Links</h3> 
+                             
+                            <a className='project-links' href="https://github.com/ali-alsadiq/ilsadali">
+                                <div>
+                                    <FaIcons.FaGithub className="social-icon"/>Code       
+                                </div>
+                            </a>      
+                           
+                            <Link className='project-links' to='/'> 
+                                <div >
+                                    <RiIcons.RiComputerLine className='comp-icon social-icon'/>Live Site
+                                </div>
+                            </Link>
+                         
                             <p className="project-info">I chose React to develop this project, because it brings me pleasure.
                             <br></br>Insparation: midnight sky</p>
-                            <Link to='/'>Live Site</Link><br/>
-                            <a href='https://github.com/ali-alsadiq'>Github</a>
+                           
                             <h3>Mockups</h3>
-                            <iframe title="portfolioMobile" width="375" height="812" src="https://xd.adobe.com/embed/22d4a695-0cbf-41b7-82f6-90c6e526260e-7787/" frameBorder="0" allowFullScreen></iframe>
+                            <LazyLoad height={812}>
+                                <iframe loading="lazy" title="portfolioMobile" width="375" height="812" src="https://xd.adobe.com/embed/22d4a695-0cbf-41b7-82f6-90c6e526260e-7787/" frameBorder="0" allowFullScreen></iframe>
+                            </LazyLoad>
                             <br/>
-                            {/* <iframe title="portfolioDesktop" width="960"xw height="540" src="https://xd.adobe.com/embed/150094a1-460b-4a1f-841c-a9e74534dda2-4053/" frameBorder="0" allowFullScreen></iframe> */}
+                            <LazyLoad height={540}>
+                                <iframe loading="lazy" title="portfolioDesktop" width="960"xw height="540" src="https://xd.adobe.com/embed/150094a1-460b-4a1f-841c-a9e74534dda2-4053/" frameBorder="0" allowFullScreen></iframe>
+                            </LazyLoad>
                     </motion.div>
 
 
                 </motion.section>
 
                 <motion.section className="project-section moviena-section">
-                    <motion.div  
-                        variants={projectDiv} 
-                        initial='hidden'
-                        animate='visable' 
-                        className="project-container" 
-                        onClick={toggleMoviena}>
+                    <motion.div className="project-container" onClick={toggleMoviena}>
+
                         <img className="portfolio-image" src={portfolioMockup} alt="img"/>
                         <span>Moviena</span><br/>
                         <FaIcons.FaReact className='icon react-icon'></FaIcons.FaReact>
@@ -221,7 +248,6 @@ function PageWork() {
                         <SiIcons.SiAdobeillustrator className='icon ai-icon'></SiIcons.SiAdobeillustrator>
                         <SiIcons.SiAdobephotoshop className='icon ps-icon'></SiIcons.SiAdobephotoshop>
                         <SiIcons.SiAdobexd className='icon xd-icon'></SiIcons.SiAdobexd>
-
                         <motion.svg 
                             variants={icon}
                             initial="hidden"
@@ -234,6 +260,7 @@ function PageWork() {
                                 animate={isMovienaOpen ? 'hidden' : 'initial'}
                             points="8 12 12 16 16 12">
                             </motion.polyline>
+
                             <motion.line
                                 variants={firstLine}
                                 initial="inital"
@@ -250,18 +277,30 @@ function PageWork() {
 
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div className={isMovienaOpen ? 'project' : 'project-hide'}
                         variants={projectDiv} 
-                        initial='hidden' 
-                        animate={isMovienaOpen ? 'visable' : 'exit'}                    
-                        className={isMovienaOpen ? 'project' : 'project-hide'}>                  
+                        animate={isMovienaOpen ? 'visable' : 'exit'}>                  
                         <p className="project-info">Dynamic website built in React utalizing tmdb.org API</p>
-                        <a href="https://github.com/ali-alsadiq/moviena/">GitHub</a><br/>
-                        <a href="https://ilsadali.com/moviena/">Live Site</a>
+                        
+                        <a className='project-links' href="https://github.com/ali-alsadiq/moviena/">
+                            <div > 
+                                <FaIcons.FaGithub className="social-icon"/>Code         
+                            </div>
+                        </a>    
+                        <Link className='project-links' to='https://ilsadali.com/moviena/'>
+                            <div >
+                                 <RiIcons.RiComputerLine className='comp-icon social-icon'/>Live Site
+                            </div>
+                        </Link>
+
                         <h3>Mockups</h3>
-                        <iframe title="movienaioMobile" width="375" height="812" src="https://xd.adobe.com/embed/362f6677-bae0-47e3-a521-7880da21825a-637c/" frameBorder="0" allowFullScreen></iframe>
+                        <LazyLoad height={812}>
+                            <iframe loading="lazy" title="movienaioMobile" width="375" height="812" src="https://xd.adobe.com/embed/362f6677-bae0-47e3-a521-7880da21825a-637c/" frameBorder="0" allowFullScreen></iframe>
+                        </LazyLoad>
                         <br/>
-                        {/* <iframe title="movienaDesktop" width="960"  height="740" src="https://xd.adobe.com/embed/e7fa7621-e1f3-443f-bd0d-88990f782389-b2a9/" frameBorder="0" allowFullScreen></iframe> */}
+                        <LazyLoad height={960}>
+                            <iframe loading="lazy" title="movienaDesktop" width="960"  height="740" src="https://xd.adobe.com/embed/e7fa7621-e1f3-443f-bd0d-88990f782389-b2a9/" frameBorder="0" allowFullScreen></iframe>
+                        </LazyLoad>
                     </motion.div>
                 
                 </motion.section>
@@ -269,11 +308,7 @@ function PageWork() {
                 
               
                 <motion.section className="project-section capstone-section">
-                <motion.div  
-                        variants={projectDiv} 
-                        initial='hidden'
-                        animate='visable' 
-                        className="project-container" 
+                    <motion.div className="project-container" 
                         onClick={toggleCapstone}>
                         <img className="portfolio-image" src={portfolioMockup} alt="img"/>
                         <span>Capstone Project</span><br/>
@@ -314,14 +349,26 @@ function PageWork() {
                         </motion.svg>
                     </motion.div>
                 
-                    <motion.div 
+                    <motion.div className={isCapstoneOpen ? 'project' : 'project-hide'}
                         variants={projectDiv} 
-                        initial='hidden' 
-                        animate={isCapstoneOpen ? 'visable' : 'exit'}                  
-                        className={isCapstoneOpen ? 'project' : 'project-hide'}>                  
+                        animate={isCapstoneOpen ? 'visable' : 'exit'}>                  
                         <p className="project-info">Worked in a team of 4 to design and develop a multipage E-commerse site in WordPress.</p>
-                        <a href="https://github.com/htpwebdesign/simple-pleasures">GitHub</a><br/>
-                        <a href="https://simplepreasures.bcitwebdeveloper.ca/">Live Site</a>
+                        
+                        <a className='project-links' href="https://github.com/htpwebdesign/simple-pleasures">
+                            <div > 
+                                <FaIcons.FaGithub className="social-icon"/>Code
+                            </div>
+                        </a>             
+                        
+                           
+            
+                        <Link className='project-links' to='https://simplepreasures.bcitwebdeveloper.ca/'> 
+                            <div  >
+                                <RiIcons.RiComputerLine className='comp-icon social-icon'/>
+                                Live Site 
+                            </div>
+                       </Link>
+
                         <h3>Wireframes</h3>
                     </motion.div>
                 </motion.section>

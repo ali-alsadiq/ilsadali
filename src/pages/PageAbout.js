@@ -1,6 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
+import React, {useEffect} from 'react';
+import { motion } from "framer-motion";
 
 function PageAbout() {
+    useEffect(() => {
+        document.title = 'ilsadali | About';
+    });
     return (
             <motion.section
                 initial={{ x: '100vw'}}
