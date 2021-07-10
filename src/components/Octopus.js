@@ -319,11 +319,12 @@ const workText={
 const octopusCode={
     hidden:{
         scale:0,
+        height:0,
         opacity:0,
         y:'-100vh',
     },
     visable:{
-        hiehgt:'300px',
+        height:'350px',
         opacity:1,
         scale:1,
         y:0,
@@ -340,6 +341,7 @@ function Octopus() {
     const [isCodeOpen, setIsCodeOpen] = useState(false);
 
     return (
+        <>
         <div className='octupos-container'>
             <motion.svg className='octupos'
             variants={octopus} 
@@ -570,19 +572,21 @@ function Octopus() {
                     stroke="none" stroke-width="1" f font-family="MarkerFelt-Thin, Marker Felt" font-weight="200" fill="none"><tspan  x="46%" y="-19.5%">View My Code</tspan></motion.text>
                 </g>
             </motion.svg>
-            <LazyLoad height={350}>
+            
+        </div>
+        <LazyLoad height={350}>
                 <motion.iframe className="octupos-code"
                     variants={octopusCode}
                     initial="hidden"
                     animate={isCodeOpen? 'visable' : ''}
-                    height="350" style={{width: '80%'}} scrolling="yes" title="octupos"
+                    style={{width: '80%'}} scrolling="yes" title="octupos"
                     src="https://codepen.io/ali-alsadiq/embed/QWvKNLm?default-tab=js" frameborder="no" loading="lazy">
                     See the Pen <a href="https://codepen.io/ali-alsadiq/pen/QWvKNLm">
                     octupos</a> by Ali (<a href="https://codepen.io/ali-alsadiq">@ali-alsadiq</a>)
                     on <a href="https://codepen.io">CodePen</a>.
                 </motion.iframe>
             </LazyLoad>
-        </div>
+        </>
     )    
 }
 
