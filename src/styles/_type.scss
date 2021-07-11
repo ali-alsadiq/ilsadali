@@ -98,19 +98,20 @@ h1 {
     text-decoration: none;
     font-size: 1.25rem;
     font-weight: 600;
-
+    color:rgb(217, 173, 255);
     &:hover,
     &:active{
-        color:rgb(217, 173, 255);
+        color:rgb(212, 88, 237);
+        .social-icon{
+            color:rgb(212, 88, 237);
+        }
+        div{
+            border: 1px solid rgb(212, 88, 237);
+        }
     }
-      
     
-    &:hover,
-    &:active{
-        color:rgb(217, 173, 255);
-    }
     div{
-        background-color: black;
+        background-color:rgba(0, 0, 65 ,0.35);
         border: 1px solid rgb(255, 185, 255);
         padding: 10px;
         border-radius: 5px;
@@ -125,11 +126,12 @@ h1 {
             margin:0 auto;
             transform: scale(1.2);  
             float: left; 
-            margin-left: 3px;    
+            margin-left: 3px; 
         }
         text-align: center;
     }
 }
+
 .project-info{
     margin-top:25px;
 }
@@ -174,4 +176,65 @@ g text{
         }
        
     }
+}
+
+.mobile-mockup,
+.desktop-mockup{
+    width:90%;
+    width:90%;
+}
+.mobile-mockup{
+    width:250px;
+}
+.mobile-mockup-container{
+    height:650px; 
+}
+.desktop-mockup-container{
+    height: 600px;       
+}
+.desktop-moviena{
+    height: 750px;       
+}
+
+@media only screen and (min-width: 500px) {
+    .mobile-mockup{
+        width:375px;
+    }
+    .mobile-mockup-container{
+        height:750px; 
+    }
+}
+@media only screen and (min-width: 800px) {
+    .mobile-mockup-container{
+        height:800px; 
+    }
+}
+@media only screen and (min-width: 1100px) {
+    .desktop-mockup{
+        width:960px;
+    }
+    .desktop-mockup-container{
+        height: 812px;       
+    }
+    .desktop-moviena{
+        height: 900px;       
+    }
+    .mobile-mockup-container{
+        height:812px;
+    }
+}
+@media only screen and (min-width: 1350px) {
+    .mockups-div{
+        display: flex;
+        justify-content:center;
+        margin:250px;
+        max-width: 1600px;
+        .mobile-mockup-container{
+            margin-right:30px;
+        }
+        .desktop-mockup-container{
+            height: 0;       
+        }
+    }
+    
 }

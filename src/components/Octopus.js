@@ -90,16 +90,15 @@ const upperLegsLeft ={
     hidden:{
         pathLength:0,
         y:'-70%',
-        x:'-10%',
+        x:'-30%',
+        scale:0.5,
+        rotateZ:-35,
+
     },
     visable:{
-        x:'-30%',
         pathLength:1,
-        scale:[0.9,1, 0.5],
         opacity:[1,0.5,1],
         originZ:0,
-        rotateZ:-35,
-        rotateY:[0,45,55,45,0,],
         transition:{
             delay:1.5,
             duration:5,
@@ -108,7 +107,6 @@ const upperLegsLeft ={
         }
     },
     hover:{
-        x:'-30%',
         pathLength:1,
         scale:[0.5, 0.6,0.5],
         opacity:[1,0.5,1],
@@ -575,12 +573,13 @@ function Octopus() {
             
         </div>
         <LazyLoad height={350}>
+
                 <motion.iframe className="octupos-code"
                     variants={octopusCode}
                     initial="hidden"
                     animate={isCodeOpen? 'visable' : ''}
                     style={{width: '80%'}} scrolling="yes" title="octupos"
-                    src="https://codepen.io/ali-alsadiq/embed/QWvKNLm?default-tab=js" frameborder="no" loading="lazy">
+                    src="https://codepen.io/ali-alsadiq/embed/preview/QWvKNLm?default-tab=js%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
                     See the Pen <a href="https://codepen.io/ali-alsadiq/pen/QWvKNLm">
                     octupos</a> by Ali (<a href="https://codepen.io/ali-alsadiq">@ali-alsadiq</a>)
                     on <a href="https://codepen.io">CodePen</a>.

@@ -221,17 +221,20 @@ function PageWork() {
                                 </div>
                             </Link>
                          
-                            <p className="project-info">I chose React to develop this project, because it brings me pleasure.
-                            <br></br>Insparation: midnight sky</p>
+                            <p className="project-info">I chose React to develop this project, to move between pages without reloading the page.
+                            <br></br>Utilizing Framer Motion library to animate components in and out. </p>
                            
                             <h3>Mockups</h3>
-                            <LazyLoad height={812}>
-                                <iframe loading="lazy" title="portfolioMobile" width="375" height="812" src="https://xd.adobe.com/embed/22d4a695-0cbf-41b7-82f6-90c6e526260e-7787/" frameBorder="0" allowFullScreen></iframe>
-                            </LazyLoad>
-                            <br/>
-                            <LazyLoad height={540}>
-                                <iframe loading="lazy" title="portfolioDesktop" width="960"xw height="540" src="https://xd.adobe.com/embed/150094a1-460b-4a1f-841c-a9e74534dda2-4053/" frameBorder="0" allowFullScreen></iframe>
-                            </LazyLoad>
+                            <div className="mockups-div">
+                                <LazyLoad className='mobile-mockup-container'>
+                                    <iframe className='mobile-mockup' loading="lazy" title="portfolioMobile" width="375" height="812" src="https://xd.adobe.com/embed/22d4a695-0cbf-41b7-82f6-90c6e526260e-7787/" frameBorder="0" allowFullScreen></iframe>
+                                </LazyLoad>
+                                <br/>
+                                <LazyLoad className='desktop-mockup-container'>
+                                    <iframe className='desktop-mockup' loading="lazy" title="portfolioDesktop" width="960" height="540" src="https://xd.adobe.com/embed/150094a1-460b-4a1f-841c-a9e74534dda2-4053/" frameBorder="0" allowFullScreen></iframe>
+                                </LazyLoad>
+                            </div>
+                            
                     </motion.div>
 
 
@@ -294,13 +297,15 @@ function PageWork() {
                         </Link>
 
                         <h3>Mockups</h3>
-                        <LazyLoad height={812}>
-                            <iframe loading="lazy" title="movienaioMobile" width="375" height="812" src="https://xd.adobe.com/embed/362f6677-bae0-47e3-a521-7880da21825a-637c/" frameBorder="0" allowFullScreen></iframe>
-                        </LazyLoad>
-                        <br/>
-                        <LazyLoad height={960}>
-                            <iframe loading="lazy" title="movienaDesktop" width="960"  height="740" src="https://xd.adobe.com/embed/e7fa7621-e1f3-443f-bd0d-88990f782389-b2a9/" frameBorder="0" allowFullScreen></iframe>
-                        </LazyLoad>
+                        <div className="mockups-div">
+                            <LazyLoad className='mobile-mockup-container'>
+                                <iframe className='mobile-mockup' loading="lazy" title="movienaioMobile" width="375" height="812" src="https://xd.adobe.com/embed/362f6677-bae0-47e3-a521-7880da21825a-637c/" frameBorder="0" allowFullScreen></iframe>
+                            </LazyLoad>
+                            <br/>
+                            <LazyLoad className='desktop-mockup-container  desktop-moviena'>
+                                <iframe className='desktop-mockup' loading="lazy" title="movienaDesktop" width="960"  height="740" src="https://xd.adobe.com/embed/e7fa7621-e1f3-443f-bd0d-88990f782389-b2a9/" frameBorder="0" allowFullScreen></iframe>
+                            </LazyLoad>
+                        </div>
                     </motion.div>
                 
                 </motion.section>
