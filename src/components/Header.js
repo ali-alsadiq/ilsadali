@@ -1,12 +1,15 @@
+import React from 'react';
 import NavBar from '../components/NavBar';
 import { motion } from "framer-motion";
+
+
 
 function Header() {
     const name ={
         hidden: {
-            opacity:1,
+            opacity:0,
             scale:.1,
-            y:'-100vh'
+            y:'10vh'
         },
         visable:{
             scale:2.5,
@@ -15,11 +18,8 @@ function Header() {
             opacity:0.1,
             textShadow:'0px 0px 8px grey', 
             transition:{
-                type:'spring', 
-                stiffness:80,
-                mass: .6,
-                damping:3.7,
-
+                type:'tween', 
+                duration:5,
             }        
         }
     }
@@ -33,7 +33,7 @@ function Header() {
             xmlns="http://www.w3.org/2000/svg"
             width='145px'
             height='120px'>
-                <text id="علي" transform="translate(46 90)" fill="rgb(128, 128, 128)" font-size="100" font-family="Farah"><tspan x="0" y="0">علي</tspan></text>
+                <text id="علي" transform="translate(46 90)" fill="rgb(128, 128, 128)" fontSize="100" fontFamily="Farah"><tspan x="0" y="0">علي</tspan></text>
         </motion.svg>
 
 </>

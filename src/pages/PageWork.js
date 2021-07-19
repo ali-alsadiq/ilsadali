@@ -2,29 +2,32 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import LazyLoad from 'react-lazyload';
+import logoState from '../local_storage/logoState';
 import * as FaIcons from "react-icons/fa";
-import * as DiIcons from "react-icons/di";
-import * as SiIcons from "react-icons/si";
 import portfolioMockup from '../images/portfolioMockup.jpg'
 import * as RiIcons from "react-icons/ri";
 
 const projectsContainer ={
     hidden:{
-        x: '-100vw'
+        scale:0, 
+        opacity:0, 
+        x:'-100vw',
+        y:'-80vh',
     },
     visable:{ 
+        scale:1, 
+        opacity:1 , 
         x:0,
+        y:0,
         transition:{
-            type: 'spring', 
-            stiffness: 90,
-            duration: 0.3, 
-            delay:0.3, 
+            type: 'tween', 
+            duration: 2
         }
     },
 }
 const projectDiv = {
     hidden: {
-        y:'-100vh',
+        x:'-100vh',
         scale:0.2,
     },
     visable:{
@@ -112,11 +115,10 @@ const icon ={
         y:0,
         scale:1.8,
         transition:{
-            delay:.05,
             type:'spring',
-            stiffness:55,
-            mass: 3,
-            damping:20
+            stiffness:30,
+            mass:  0.25,
+            damping:1
         }
     },
     hover:{
@@ -130,7 +132,7 @@ const icon ={
 function PageWork() {
     useEffect(() => {
         document.title = 'ilsadali | Work';
-    });
+    },[]);
 
     const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
     const [isMovienaOpen, setIsMovienaOpen] = useState(false);
@@ -154,14 +156,24 @@ function PageWork() {
         setIsPortfolioOpen(!isPortfolioOpen);
     }
 
+    const logoStateAndActions = logoState();
+    const logoLocalState = logoStateAndActions[0];
+    const logoLocalActions = logoStateAndActions[1];
+
+    function toggleVisabitly(){
+        setTimeout(function(){logoLocalActions.changeVisabilty('true')}, 3500);
+    }
+
     return (
         <>
+            {(logoLocalState.visable ==='true' ?
+
             <motion.section
                 variants={projectsContainer}
                 initial='hidden'
                 animate='visable'
-                transition={{ type: 'spring', stiffness: 90, duration: 0.3, delay:0.3, when:'beforeChildren'}}
-                exit={{ x:'-100vw', transition:{ ease: 'easeInOut', duration:0.3} }}>
+                transition={{ type: 'tween', duration: 1}}
+                exit={{ scale:0.0, opacity:0,x:'100vw',  y:'-80vh', transition:{ ease: 'easeInOut', duration: 1}  }}>
 
                 <motion.section className="project-section portfolio-section">
 
@@ -171,12 +183,6 @@ function PageWork() {
 
                         <img className="portfolio-image" src={portfolioMockup} alt="img"/>
                         <span>Personal Portfolio</span><br/>
-                        <FaIcons.FaReact className='icon react-icon'></FaIcons.FaReact>
-                        <FaIcons.FaSass className='icon sass-icon'></FaIcons.FaSass>
-                        <DiIcons.DiJavascript1 className='icon js-icon'></DiIcons.DiJavascript1>
-                        <SiIcons.SiAdobeillustrator className='icon ai-icon'></SiIcons.SiAdobeillustrator>
-                        <SiIcons.SiAdobephotoshop className='icon ps-icon'></SiIcons.SiAdobephotoshop>
-                        <SiIcons.SiAdobexd className='icon xd-icon'></SiIcons.SiAdobexd>
                        
                         <motion.svg 
                             variants={icon}
@@ -209,7 +215,7 @@ function PageWork() {
                             className={isPortfolioOpen ? 'project' : 'project-hide'}>  
                             <h3>Project Links</h3> 
                              
-                            <a className='project-links' href="https://github.com/ali-alsadiq/ilsadali">
+                            <a className='project-links' href="https://github.com/ali-alsadiq/ilsadali" target="_blank" rel="noopener noreferrer">
                                 <div>
                                     <FaIcons.FaGithub className="social-icon"/>Code       
                                 </div>
@@ -223,17 +229,44 @@ function PageWork() {
                          
                             <p className="project-info">I chose React to develop this project, to move between pages without reloading the page.
                             <br></br>Utilizing Framer Motion library to animate components in and out. </p>
-                           
-                            <h3>Mockups</h3>
-                            <div className="mockups-div">
-                                <LazyLoad className='mobile-mockup-container'>
-                                    <iframe className='mobile-mockup' loading="lazy" title="portfolioMobile" width="375" height="812" src="https://xd.adobe.com/embed/22d4a695-0cbf-41b7-82f6-90c6e526260e-7787/" frameBorder="0" allowFullScreen></iframe>
+                           <section className="design">
+                                <h3>Design</h3>
+                                    <div className='site-colors'>
+                                        <span>Background</span>
+                                        <div className='background-color'>
+                                        </div>    
+                                        <span>Logo</span>
+                                        <div className='logo-color'>
+                                        </div>    
+                                        <span>Initial Links</span>
+                                        <div className='initial-links-color'>
+                                        </div>
+                                        <span>Active Links</span>
+                                        <div className='active-links-color'>
+                                        </div>        
+                                    </div>
+                                    <div className="mockups-div">
+                                        <LazyLoad className='mobile-mockup-container'>
+                                            <iframe className='mobile-mockup' loading="lazy" title="portfolioMobile" width="375" height="812" src="https://xd.adobe.com/embed/22d4a695-0cbf-41b7-82f6-90c6e526260e-7787/" frameBorder="0" allowFullScreen></iframe>
+                                        </LazyLoad>
+                                        <br/>
+                                        <LazyLoad className='desktop-mockup-container'>
+                                            <iframe className='desktop-mockup' loading="lazy" title="portfolioDesktop" width="960" height="540" src="https://xd.adobe.com/embed/150094a1-460b-4a1f-841c-a9e74534dda2-4053/" frameBorder="0" allowFullScreen></iframe>
+                                        </LazyLoad>
+                                    </div>
+                           </section>
+                            
+                            <section className="development">
+                                <h3>Development</h3>
+                                <LazyLoad className='arrow-code'>
+                                    <iframe height="350" style={{width:'80%'}} scrolling="no" title="arrow-icon" src="https://codepen.io/ali-alsadiq/embed/preview/RwVoEJX?default-tab=js&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen={true}>
+                                        See the Pen <a href="https://codepen.io/ali-alsadiq/pen/RwVoEJX" target="_blank" rel="noopener noreferrer">
+                                        </a> by Ali (<a href="https://codepen.io/ali-alsadiq" target="_blank" rel="noopener noreferrer">@ali-alsadiq</a>)
+                                        on <a href="https://codepen.io" target="_blank" rel="noopener noreferrer">CodePen</a>.
+                                    </iframe>
                                 </LazyLoad>
-                                <br/>
-                                <LazyLoad className='desktop-mockup-container'>
-                                    <iframe className='desktop-mockup' loading="lazy" title="portfolioDesktop" width="960" height="540" src="https://xd.adobe.com/embed/150094a1-460b-4a1f-841c-a9e74534dda2-4053/" frameBorder="0" allowFullScreen></iframe>
-                                </LazyLoad>
-                            </div>
+                               
+                            </section>
                             
                     </motion.div>
 
@@ -245,12 +278,7 @@ function PageWork() {
 
                         <img className="portfolio-image" src={portfolioMockup} alt="img"/>
                         <span>Moviena</span><br/>
-                        <FaIcons.FaReact className='icon react-icon'></FaIcons.FaReact>
-                        <FaIcons.FaSass className='icon sass-icon'></FaIcons.FaSass>
-                        <DiIcons.DiJavascript1 className= 'icon js-icon'></DiIcons.DiJavascript1>
-                        <SiIcons.SiAdobeillustrator className='icon ai-icon'></SiIcons.SiAdobeillustrator>
-                        <SiIcons.SiAdobephotoshop className='icon ps-icon'></SiIcons.SiAdobephotoshop>
-                        <SiIcons.SiAdobexd className='icon xd-icon'></SiIcons.SiAdobexd>
+                        
                         <motion.svg 
                             variants={icon}
                             initial="hidden"
@@ -285,19 +313,19 @@ function PageWork() {
                         animate={isMovienaOpen ? 'visable' : 'exit'}>                  
                         <p className="project-info">Dynamic website built in React utalizing tmdb.org API</p>
                         
-                        <a className='project-links' href="https://github.com/ali-alsadiq/moviena/">
+                        <a className='project-links' href="https://github.com/ali-alsadiq/moviena/" target="_blank" rel="noopener noreferrer">
                             <div > 
                                 <FaIcons.FaGithub className="social-icon"/>Code         
                             </div>
                         </a>    
-                        <Link className='project-links' to='https://ilsadali.com/moviena/'>
+                        <Link className='project-links' to='https://ilsadali.com/moviena/' target="_blank" rel="noopener noreferrer">
                             <div >
                                  <RiIcons.RiComputerLine className='comp-icon social-icon'/>Live Site
                             </div>
                         </Link>
 
                         <h3>Mockups</h3>
-                        <div className="mockups-div">
+                        <div className="mockups-div moviena">
                             <LazyLoad className='mobile-mockup-container'>
                                 <iframe className='mobile-mockup' loading="lazy" title="movienaioMobile" width="375" height="812" src="https://xd.adobe.com/embed/362f6677-bae0-47e3-a521-7880da21825a-637c/" frameBorder="0" allowFullScreen></iframe>
                             </LazyLoad>
@@ -317,16 +345,6 @@ function PageWork() {
                         onClick={toggleCapstone}>
                         <img className="portfolio-image" src={portfolioMockup} alt="img"/>
                         <span>Capstone Project</span><br/>
-                    
-                        <FaIcons.FaSass className='icon sass-icon'></FaIcons.FaSass>
-                        <DiIcons.DiJavascript1 className='icon js-icon'></DiIcons.DiJavascript1>
-                        <FaIcons.FaPhp className='icon php-icon'></FaIcons.FaPhp>
-                        <FaIcons.FaWordpress className='icon wp-icon'></FaIcons.FaWordpress>
-                        <SiIcons.SiWoocommerce className="icon woo-icon"></SiIcons.SiWoocommerce><br></br>
-                        <SiIcons.SiAdobeillustrator className='icon ai-icon'></SiIcons.SiAdobeillustrator>
-                        <SiIcons.SiAdobephotoshop className='icon ps-icon'></SiIcons.SiAdobephotoshop>
-                        <SiIcons.SiAdobexd className='icon xd-icon'></SiIcons.SiAdobexd>
-
                         <motion.svg 
                             variants={icon}
                             initial="hidden"
@@ -359,7 +377,7 @@ function PageWork() {
                         animate={isCapstoneOpen ? 'visable' : 'exit'}>                  
                         <p className="project-info">Worked in a team of 4 to design and develop a multipage E-commerse site in WordPress.</p>
                         
-                        <a className='project-links' href="https://github.com/htpwebdesign/simple-pleasures">
+                        <a className='project-links' href="https://github.com/htpwebdesign/simple-pleasures" target="_blank" rel="noopener noreferrer">
                             <div > 
                                 <FaIcons.FaGithub className="social-icon"/>Code
                             </div>
@@ -367,7 +385,7 @@ function PageWork() {
                         
                            
             
-                        <Link className='project-links' to='https://simplepreasures.bcitwebdeveloper.ca/'> 
+                        <Link className='project-links' to='https://simplepreasures.bcitwebdeveloper.ca/' target="_blank" rel="noopener noreferrer"> 
                             <div  >
                                 <RiIcons.RiComputerLine className='comp-icon social-icon'/>
                                 Live Site 
@@ -381,8 +399,13 @@ function PageWork() {
                
 
             </motion.section>
+            :toggleVisabitly() )}
+
         </>
     )
 }
 
+
 export default PageWork
+
+

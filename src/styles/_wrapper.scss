@@ -66,11 +66,7 @@
         }
     }
 }
-.woo-icon{  
-    transform: scale(5);
-    padding-top: 1px;
-    margin-left: 50px;
-}
+
 .portfolio-image{
     object-fit: cover;
     object-position: 30% 30%;
@@ -83,11 +79,8 @@
     }   
 }
 .octupos-container{
-    max-height: 650px;
-    @media only screen and (min-width: 480px) {
-        max-height: 750px;
-    }
+    max-height: 450px;
     @media only screen and (min-width: 600px) {
-        max-height: 900px;
+        max-height: 500px;
     }
 }

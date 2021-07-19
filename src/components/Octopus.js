@@ -6,14 +6,16 @@ import LazyLoad from 'react-lazyload';
 const octopus ={
     hidden:{
         scale:0.08,
-        opacity:.4,
+        opacity:0,
+        y:'-10vh',
         x:'10%',
-        y:'10vh',
     },
     visable:{
+        y:'-2vh',
         scale:0.7,
         opacity:0.5,
         transition:{
+            delay:2,
             duration:3,
         }
     }
@@ -332,6 +334,22 @@ const octopusCode={
         }
     }
 }
+const mouth = {
+    hidden:{
+        scale:0,
+        height:0,
+        opacity:0,
+    },
+    visable:{
+        opacity:1,
+        scale:1,
+        y:'-46%',
+        transition:{
+            duration:2,
+            ease: 'easeInOut',
+        }
+    }
+}
 
 
 function Octopus() {
@@ -357,9 +375,8 @@ function Octopus() {
             <motion.path variants ={legs} className="cls-1" d="M45.31,235.22l-.3-.35c-.2-.25-.51-.54-.89-1.07A17.67,17.67,0,0,1,41.54,229a23.82,23.82,0,0,1-1.27-8.2,29.61,29.61,0,0,1,2.15-10.44,57.6,57.6,0,0,1,5.95-11c2.45-3.66,5.2-7.36,7.69-11.35a45.33,45.33,0,0,0,5.86-13,23.09,23.09,0,0,0,.64-7.06,25.18,25.18,0,0,0-.43-3.55,33.39,33.39,0,0,0-1-3.49,75.61,75.61,0,0,0-6.41-13.31c-1.22-2.18-2.46-4.35-3.59-6.6a58.72,58.72,0,0,1-3-6.93l-.16-.44-.06-.2,0-.1-.07-.22-.24-.85-.48-1.7c-.27-1.2-.52-2.46-.74-3.66s-.34-2.37-.42-3.55-.18-2.32-.17-3.46a62.13,62.13,0,0,1,1.29-12.66A91.09,91.09,0,0,1,49.87,97c1-3,2-5.52,2.79-7.6s1.53-3.69,2-4.79L55.43,83a1,1,0,0,1,1.29-.49,1,1,0,0,1,.54,1.13h0s-.63,2.47-1.8,6.74c-.56,2.15-1.3,4.73-2,7.7s-1.49,6.32-2.09,10a69.07,69.07,0,0,0-.94,11.82c0,1,.09,2.09.13,3.16s.25,2.13.36,3.21.38,2.07.61,3.15c.15.57.31,1.13.46,1.7l.23.86.06.21,0,.11v0l0,.05.13.4a92.78,92.78,0,0,0,5.9,13c2.27,4.45,4.72,9.08,6.15,14.23a37.42,37.42,0,0,1,.88,3.91,30.46,30.46,0,0,1,.31,4,26.55,26.55,0,0,1-1.07,7.88A48.41,48.41,0,0,1,58,189.26c-2.7,4-5.55,7.62-8,11.21A55.6,55.6,0,0,0,44.11,211a27.7,27.7,0,0,0-2,9.82,20.65,20.65,0,0,0,1.22,7.54,15.9,15.9,0,0,0,2.32,4.23,12.87,12.87,0,0,0,.86,1l.31.35a1,1,0,1,1-1.45,1.29Z" transform="translate(0 -8.4)"/>
             <motion.path variants ={upperLegsLeft} className="cls-1" d="M60.83,239l-.32-.42a10.7,10.7,0,0,1-.92-1.32,14.77,14.77,0,0,1-2.1-5.88,20.21,20.21,0,0,1-.14-4.39,26.34,26.34,0,0,1,.95-5,26.92,26.92,0,0,1,2.26-5.34c.24-.45.5-.9.79-1.34s.59-.91.89-1.31c.58-.83,1.29-1.74,2-2.57a97.1,97.1,0,0,1,10.12-9.87c1.85-1.65,3.75-3.35,5.52-5.18a42.28,42.28,0,0,0,4.89-6.05,27,27,0,0,0,3.39-7.11,17.35,17.35,0,0,0,.6-7.77c-.13-.53-.28-1.4-.47-2a16.79,16.79,0,0,0-.67-1.81,22.51,22.51,0,0,0-1.9-3.55,50.17,50.17,0,0,0-5.31-6.48c-2-2.09-4-4.18-5.93-6.43-.48-.59-.93-1.1-1.44-1.76l-1.29-1.73c-.85-1.26-1.71-2.54-2.42-3.82a51.57,51.57,0,0,1-3.69-8,61.66,61.66,0,0,1-2.22-8.29,65.46,65.46,0,0,1-.94-16.13c.16-2.59.51-5,.89-7.4s.9-4.64,1.47-6.78a95.48,95.48,0,0,1,3.78-11.45c1.35-3.32,2.63-6.15,3.77-8.43s2.09-4.06,2.75-5.25l1-1.83a1,1,0,0,1,1.76.82v0s-1,2.69-2.82,7.4c-.87,2.36-1.91,5.22-3,8.54S70,98.1,69,102.24c-.48,2.06-.86,4.23-1.23,6.48s-.64,4.6-.75,7a63.62,63.62,0,0,0,.76,15,51.67,51.67,0,0,0,5.06,15.14c.63,1.22,1.33,2.34,2,3.48l1.24,1.77c.34.49.82,1.08,1.23,1.61,1.76,2.18,3.7,4.3,5.61,6.52a54.82,54.82,0,0,1,5.37,7.14,24.87,24.87,0,0,1,2,4.12,19.09,19.09,0,0,1,.72,2.25c.21.8.27,1.35.43,2.21a20.31,20.31,0,0,1-.92,8.94,29.68,29.68,0,0,1-3.91,7.65c-3.2,4.61-7.27,8.16-11,11.43a95.09,95.09,0,0,0-10.06,9.54c-.7.81-1.3,1.58-1.92,2.45-.31.42-.56.81-.83,1.23s-.51.82-.74,1.25a25.67,25.67,0,0,0-2.12,5,24,24,0,0,0-.87,4.66,18.72,18.72,0,0,0,.17,4,13,13,0,0,0,1.87,5.09,9.72,9.72,0,0,0,.87,1.21l.32.42A1,1,0,1,1,60.84,239Z" transform="translate(0 -8.4)"/>
             <motion.path variants ={upperLegsRight} className="cls-1" d="M48.9,233.63l1-1.48.53-.81.55-1c.19-.35.41-.73.63-1.14s.42-.88.64-1.35a33.86,33.86,0,0,0,2.47-7.21,38.79,38.79,0,0,0,1-9.84,38.1,38.1,0,0,0-2.19-11.46L53,197.89c-.22-.48-.44-1-.65-1.45-.41-1-1-1.9-1.48-2.86a53.4,53.4,0,0,0-3.8-5.53c-2.77-3.66-6-7.31-8.53-11.72a25.84,25.84,0,0,1-2.94-7.2,21.43,21.43,0,0,1-.54-3.95,23.13,23.13,0,0,1,.22-4c.76-5.28,3-10,5-14.43s4.25-8.75,6.21-12.91a110.65,110.65,0,0,0,5-12.11A54.42,54.42,0,0,0,53.17,116c.43-1.82.76-3.68,1-5.43a44.72,44.72,0,0,0,.24-9.64A32.76,32.76,0,0,0,53,93.61c-.14-.5-.33-1-.49-1.38S52.2,91.38,52,91c-.34-.73-.6-1.37-.86-1.87l-.8-1.52,0-.07a1,1,0,0,1,1.62-1L53.09,88a26.47,26.47,0,0,1,2.63,4.56,31.19,31.19,0,0,1,2.39,7.86,42,42,0,0,1,.35,10.6,44.88,44.88,0,0,1-.92,6,58.46,58.46,0,0,1-1.71,6.18,104.33,104.33,0,0,1-5.34,12.58c-2.08,4.21-4.38,8.45-6.59,12.73s-4.36,8.67-5.22,13.22a18.82,18.82,0,0,0-.35,3.37,18.25,18.25,0,0,0,.3,3.41A23,23,0,0,0,41,175c2.2,4.15,5.24,7.86,7.95,11.68a58.89,58.89,0,0,1,3.76,5.88c.52,1,1.1,2,1.51,3.06l.66,1.53q.27.8.54,1.56a39.89,39.89,0,0,1,2.12,12.07,40.79,40.79,0,0,1-1,10.29,40.08,40.08,0,0,1-2.54,7.58c-.23.5-.42,1-.66,1.43l-.66,1.24c-.21.39-.41.74-.58,1.07l-.53.82c-.63,1-1,1.5-1,1.5a1,1,0,0,1-1.64-1Z" transform="translate(0 -8.4)"/>
-
             <motion.path className="cls-2" d="M40.27,11.36c7.91-5,18.65-3.26,26.42,1.93S79.8,26.51,84.49,34.58c8.22,14.14,15.2,29.54,16.08,45.88.2,3.77,0,7.67-1.5,11.12s-4.75,6.36-8.51,6.63c-5.25.38-9.82-4.2-15.09-4.11-5.86.1-10,5.76-15.43,7.94-5.8,2.33-12.4.45-18.16-2-3.44-1.44-7-3.11-10.73-2.71-2.61.29-5,1.57-7.39,2.62-5.52,2.4-12.27,3.5-17.33.25C-.84,95.57-.77,85,1,76.57A128.89,128.89,0,0,1,22.5,27.63C27.81,20.24,34.33,13.13,43,10.27" transform="translate(0 -8.4)"/>
-            <motion.path  className="cls-3" d="M84.4,64.54a9.81,9.81,0,1,1-7-12A9.82,9.82,0,0,1,84.4,64.54Z" transform="translate(0 -8.4)"/>
+            <motion.path className="cls-3" d="M84.4,64.54a9.81,9.81,0,1,1-7-12A9.82,9.82,0,0,1,84.4,64.54Z" transform="translate(0 -8.4)"/>
             <motion.path variants={rightEyeTop} className="cls-4" d="M78,64.55c.42.87,1.17,1.78,2.13,1.65s1.42-1.06,1.61-1.93a5.83,5.83,0,0,0-.36-3.5A8.29,8.29,0,0,0,80,58.67a8.17,8.17,0,0,0-5.2-3.19,2.34,2.34,0,0,0-2,.57,2.44,2.44,0,0,0-.54,1.53,3.36,3.36,0,0,0,.2,1.51c.68,1.58,2.86,1.85,4,3.13A19.86,19.86,0,0,1,78,64.55Z" transform="translate(0 -8.4)"/>
             <motion.path variants={rightEyeBottom} className="cls-4" d="M74.78,65.21a2.91,2.91,0,0,1,1.51.6A1.23,1.23,0,0,1,75.75,68,3.54,3.54,0,0,1,73,67.18a1.41,1.41,0,0,1-.25-1.63A1.43,1.43,0,0,1,74,64.93a3.85,3.85,0,0,1,1.41.35c.28.11.59.27.66.56" transform="translate(0 -8.4)"/>
             <motion.path className="cls-3" d="M39.47,63.41a9.81,9.81,0,1,1-7-12A9.8,9.8,0,0,1,39.47,63.41Z" transform="translate(0 -8.4)"/>
@@ -367,7 +384,7 @@ function Octopus() {
             <motion.path variants={LeftEyeBottom} className="cls-4" d="M29.85,64.07a2.81,2.81,0,0,1,1.5.61,1.22,1.22,0,0,1-.53,2.21,2.89,2.89,0,0,1-1.24,0A3,3,0,0,1,28,66a1.44,1.44,0,0,1-.25-1.63A1.49,1.49,0,0,1,29,63.79a3.85,3.85,0,0,1,1.4.35c.28.12.59.27.67.56" transform="translate(0 -8.4)"/>
             <motion.path className="cls-5" d="M86.79,73.14c0,1.9-2.82,3.42-6.29,3.41S74.23,75,74.24,73.11s2.82-3.42,6.28-3.41S86.79,71.25,86.79,73.14Z" transform="translate(0 -8.4)"/>
             <motion.path className="cls-5" d="M29.58,71.7c0,1.89-2.82,3.41-6.28,3.41S17,73.56,17,71.66s2.82-3.42,6.28-3.41S29.58,69.8,29.58,71.7Z" transform="translate(0 -8.4)"/>
-            <motion.path className="cls-3" d="M56.21,60.47s0,.31.1.87a14.76,14.76,0,0,1,0,2.4,8.5,8.5,0,0,1-.29,1.67,6.88,6.88,0,0,1-.34.91,3.19,3.19,0,0,1-.23.44,4,4,0,0,1-.29.46,5.82,5.82,0,0,1-1.6,1.52,4.18,4.18,0,0,1-3,.65l-.36-.08-.22-.06a4,4,0,0,1-1.15-.59A5,5,0,0,1,47.43,67a6.48,6.48,0,0,1-.67-1.89,9.84,9.84,0,0,1-.15-1.66c0-1,.1-1.78.12-2.32s.06-.84.06-.84a.69.69,0,0,1,.72-.63.67.67,0,0,1,.62.56s.06.33.11.89.1,1.35.2,2.23a10.79,10.79,0,0,0,.25,1.37,5.5,5.5,0,0,0,.54,1.26,3.4,3.4,0,0,0,.91,1,2.13,2.13,0,0,0,.51.27l.23.06H51a1.53,1.53,0,0,0,.3,0A3.17,3.17,0,0,0,53.58,66c.07-.09.15-.19.2-.27l.09-.12.1-.19a3.92,3.92,0,0,0,.29-.62,8.6,8.6,0,0,0,.38-1.3,19.36,19.36,0,0,0,.27-2.16c.05-.55.07-.86.07-.86a.62.62,0,0,1,1.23,0Z" transform="translate(0 -8.4)"/>
+            <motion.path variants={mouth} className="mouth cls-3" d="M64.83,181.69a2.58,2.58,0,0,0,.23.87,6.46,6.46,0,0,1,0,2.4,4.42,4.42,0,0,1-.66,1.67,6.5,6.5,0,0,1-.79.91,3.44,3.44,0,0,1-.53.44,5.86,5.86,0,0,1-.66.46A15.15,15.15,0,0,1,58.74,190a20.39,20.39,0,0,1-6.91.65l-.83-.08-.5-.06a15.42,15.42,0,0,1-2.65-.59,10.08,10.08,0,0,1-3.22-1.66,5,5,0,0,1-1.54-1.89,4.45,4.45,0,0,1-.35-1.66,17,17,0,0,1,.28-2.32,3.81,3.81,0,0,1,.14-.84c.07-.37.8-.65,1.65-.63s1.31.25,1.43.56a4.94,4.94,0,0,1,.25.89c.12.56.23,1.35.46,2.23a6,6,0,0,0,.58,1.37,5.25,5.25,0,0,0,1.24,1.26,7.47,7.47,0,0,0,2.1,1,9.16,9.16,0,0,0,1.17.27l.53.06h1a11.53,11.53,0,0,0,5.25-1.3c.16-.09.35-.19.46-.27l.21-.12.23-.19a4.51,4.51,0,0,0,.67-.62,5.68,5.68,0,0,0,.87-1.3,9.25,9.25,0,0,0,.62-2.16c.12-.55.16-.86.16-.86.1-.34.82-.58,1.6-.54s1.15.26,1.23.54Z" transform="translate(-42.74 -180.88)"/>
             <motion.path className="cls-1" d="M76.49,26.52a3.45,3.45,0,0,1,.61.39A6.11,6.11,0,0,1,78.15,28a5.88,5.88,0,0,1,.76,1.28,3,3,0,0,1,.2.68.75.75,0,0,1-.64.87.78.78,0,0,1-.43-.06,3.2,3.2,0,0,1-.6-.39,5.68,5.68,0,0,1-1-1.09,6.11,6.11,0,0,1-.72-1.3,3.1,3.1,0,0,1-.2-.69.69.69,0,0,1,.59-.79A.64.64,0,0,1,76.49,26.52Z" transform="translate(0 -8.4)"/>
             <motion.path className="cls-1" d="M78.26,35.19a5.69,5.69,0,0,1,.63.64A9,9,0,0,1,80,37.41a8.86,8.86,0,0,1,.75,1.74,5.59,5.59,0,0,1,.19.88.74.74,0,0,1-.66.79.8.8,0,0,1-.53-.16,4.93,4.93,0,0,1-.62-.65,9.64,9.64,0,0,1-1-1.6,10,10,0,0,1-.71-1.77,5.12,5.12,0,0,1-.17-.88.66.66,0,0,1,.6-.72A.68.68,0,0,1,78.26,35.19Z" transform="translate(0 -8.4)"/>
             <motion.path className="cls-1" d="M84,38.11a3.83,3.83,0,0,1,.51.58,7,7,0,0,1,.78,1.4,6.55,6.55,0,0,1,.44,1.53,3.35,3.35,0,0,1,0,.76.75.75,0,0,1-.81.69.84.84,0,0,1-.43-.19,3.54,3.54,0,0,1-.5-.58,6.27,6.27,0,0,1-.73-1.42,6.45,6.45,0,0,1-.4-1.55,4.26,4.26,0,0,1,0-.76.7.7,0,0,1,.75-.63A.66.66,0,0,1,84,38.11Z" transform="translate(0 -8.4)"/>
@@ -392,27 +409,26 @@ function Octopus() {
             <motion.path className="cls-1" d="M85.93,95.79a1.13,1.13,0,0,1-.46.24,2.12,2.12,0,0,1-1.07,0,2.06,2.06,0,0,1-.93-.49,1.4,1.4,0,0,1-.31-.43A.85.85,0,0,1,83.64,94l.06,0,.1,0a1.8,1.8,0,0,1,.41-.07,2,2,0,0,1,.72.08,2.31,2.31,0,0,1,.67.32c.17.12.35.27.35.27a.78.78,0,0,1,.09,1.1l0,0Z" transform="translate(0 -8.4)"/>
             <motion.path variants={arm} className="oct-arm cls-2" d="M34.46,6.83C33.78,8,25.9,21.54,14.06,22.16c-5.56.3-10.54-2.48-12.49-3.7C-.68,17-.49,14.85,2,13.57c.25-.13.48-.44.92-.46a1.29,1.29,0,0,1,.77.25l1,.15,1.27.19c1.92.28,6.12,3.46,6.12,3.46,1.71,1.29,6,1,17.44-6.87Z"/>
             <motion.path variants={hand}className="cls-2" d="M30.7,7.65c-.06-.78.53-2.1.6-3.51.06-1-.32-2.93,1.11-3,1.64,0,1,3.05,1,3.05S35.7.73,37.32.09a1,1,0,0,1,1.12,1.55c-.49.54-.72.59-1.43,1.42a12.19,12.19,0,0,0-1.09,1.47,12.45,12.45,0,0,1,3.53-3.07c1.17-.52,2.12.93,1.32,1.58S37.92,5,37.42,5.8c-.14-.11,2.4-2,3.79-1.95,1,.08.91,1.54.35,1.93-.33.22-3.09,1.29-3.05,1.5,0,0,2.67-.91,3,.13a1.21,1.21,0,0,1-.78,1.42,6.37,6.37,0,0,0-2.46.74c-.88.59-2,1.58-3.22,1.61S30.89,10.23,30.7,7.65Z"/>
-            
             <NavLink to='/work'>
                 <defs>
                     <filter id="Path_1">
                     <feOffset dy="3" input="SourceAlpha"/>
                     <feGaussianBlur stdDeviation="3" result="blur"/>
-                    <feFlood flood-opacity="0.412" result="color"/>
+                    <feFlood floodOpacity="0.412" result="color"/>
                     <feComposite operator="out" in="SourceGraphic" in2="blur"/>
                     <feComposite operator="in" in="color"/>
                     <feComposite operator="in" in2="SourceGraphic"/>
                     </filter>
-                    <filter id="View_More_Work" x="5" y="6" width="144" height="40" filterUnits="userSpaceOnUse">
+                    <filter id="View_More_Work" x="5" y="6"  filterUnits="userSpaceOnUse">
                     <feOffset dy="3" input="SourceAlpha"/>
                     <feGaussianBlur stdDeviation="3" result="blur-2"/>
-                    <feFlood flood-opacity="0.161"/>
+                    <feFlood floodOpacity="0.161"/>
                     <feComposite operator="in" in2="blur-2"/>
                     </filter>
-                    <filter id="View_More_Work-2" x="5" y="6" width="144" height="40" filterUnits="userSpaceOnUse">
+                    <filter id="View_More_Work-2" x="5" y="6" filterUnits="userSpaceOnUse">
                     <feOffset dy="3" input="SourceAlpha"/>
                     <feGaussianBlur stdDeviation="3" result="blur-3"/>
-                    <feFlood flood-opacity="0.161" result="color-2"/>
+                    <feFlood floodOpacity="0.161" result="color-2"/>
                     <feComposite operator="out" in="SourceGraphic" in2="blur-3"/>
                     <feComposite operator="in" in="color-2"/>
                     <feComposite operator="in" in2="SourceGraphic"/>
@@ -432,7 +448,7 @@ function Octopus() {
                         d="M 22.5 1 C 19.59707641601562 1 16.78152465820312 1.568321228027344 14.13154602050781 2.689159393310547 C 11.57145690917969 3.771999359130859 9.272064208984375 5.322360992431641 7.297195434570312 7.297199249267578 C 5.322357177734375 9.272060394287109 3.772003173828125 11.57146072387695 2.689163208007812 14.13154029846191 C 1.568313598632812 16.78152084350586 1 19.59708023071289 1 22.5 C 1 25.40291976928711 1.568313598632812 28.21847915649414 2.689163208007812 30.86845970153809 C 3.772003173828125 33.42853927612305 5.322357177734375 35.72793960571289 7.297195434570312 37.70280075073242 C 9.272064208984375 39.67763900756836 11.57145690917969 41.22800064086914 14.13154602050781 42.31084060668945 C 16.78152465820312 43.43167877197266 19.59707641601562 44 22.5 44 L 131.5 44 C 134.4029235839844 44 137.2184753417969 43.43167877197266 139.8684539794922 42.31084060668945 C 142.4285430908203 41.22800064086914 144.7279357910156 39.67763900756836 146.7028045654297 37.70280075073242 C 148.6776428222656 35.72793960571289 150.2279968261719 33.42853927612305 151.3108367919922 30.86845970153809 C 152.4316864013672 28.21847915649414 153 25.40291976928711 153 22.5 C 153 19.59708023071289 152.4316864013672 16.78152084350586 151.3108367919922 14.13154029846191 C 150.2279968261719 11.57146072387695 148.6776428222656 9.272060394287109 146.7028045654297 7.297199249267578 C 144.7279357910156 5.322360992431641 142.4285430908203 3.771999359130859 139.8684539794922 2.689159393310547 C 137.2184753417969 1.568321228027344 134.4029235839844 1 131.5 1 L 22.5 1 M 22.5 0 L 131.5 0 C 143.9264068603516 0 154 10.07360076904297 154 22.5 C 154 34.92639923095703 143.9264068603516 45 131.5 45 L 22.5 45 C 10.07359313964844 45 0 34.92639923095703 0 22.5 C 0 10.07360076904297 10.07359313964844 0 22.5 0 Z" stroke="none"/>
                     </g>
                     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_1)">
-                    <g id="Path_1-3" data-name="Path 1" fill="#fff">
+                    <g id="Path_1-3" data-name="Path 1" >
                         <motion.path 
                             variants={workButton} 
                             initial='hidden'
@@ -464,19 +480,19 @@ function Octopus() {
                     variants={workText}
                     initial='hidden'
                     animate='visable'
-                    id="View_More_Work-3" data-name="View More Work" transform="translate(15 29)" fill="#fff" stroke="#fff" stroke-width="1" font-size="10" font-family="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan x='-16%'y='-31.5%'>View More Work</tspan></motion.text>
+                    id="View_More_Work-3" data-name="View More Work" transform="translate(15 29)" fill="#fff" stroke="#fff" stroke-width="1" fontSize="10" fontFamily="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan x='-16%'y='-31.5%'>View More Work</tspan></motion.text>
                     </g>
                     <motion.text 
                     variants={workText}
                     initial='hidden'
                     animate='visable'
-                    id="View_More_Work-4" data-name="View More Work" transform="translate(15 29)" fill="#fff" font-size="10" font-family="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan x='-16%'y='-31.5%'>View More Work</tspan></motion.text>
+                    id="View_More_Work-4" data-name="View More Work" transform="translate(15 29)" fill="#fff" fontSize="10" fontFamily="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan x='-16%'y='-31.5%'>View More Work</tspan></motion.text>
                     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#View_More_Work-2)">
                     <motion.text 
                     variants={workText}
                     initial='hidden'
                     animate='visable'
-                    id="View_More_Work-5" data-name="View More Work" transform="translate(15 29)" fill="#fff" font-size="10" font-family="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan x='-16%'y='-31.5%'>View More Work</tspan></motion.text>
+                    id="View_More_Work-5" data-name="View More Work" transform="translate(15 29)" fill="#fff" fonSize="10" fontFamily="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan x='-16%'y='-31.5%'>View More Work</tspan></motion.text>
                     </g>
                 </g>
             </NavLink>
@@ -486,7 +502,7 @@ function Octopus() {
                     <filter id="Path_1">
                     <feOffset dy="3" input="SourceAlpha"/>
                     <feGaussianBlur stdDeviation="3" result="blur"/>
-                    <feFlood flood-opacity="0.412" result="color"/>
+                    <feFlood floodOpacity="0.412" result="color"/>
                     <feComposite operator="out" in="SourceGraphic" in2="blur"/>
                     <feComposite operator="in" in="color"/>
                     <feComposite operator="in" in2="SourceGraphic"/>
@@ -494,13 +510,13 @@ function Octopus() {
                     <filter id="View_My_Code" x="11" y="5" width="134" height="41" filterUnits="userSpaceOnUse">
                     <feOffset dy="3" input="SourceAlpha"/>
                     <feGaussianBlur stdDeviation="3" result="blur-2"/>
-                    <feFlood flood-opacity="0.161"/>
+                    <feFlood floodOpacity="0.161"/>
                     <feComposite operator="in" in2="blur-2"/>
                     </filter>
                     <filter id="View_My_Code-2" x="11" y="5" width="134" height="41" filterUnits="userSpaceOnUse">
                     <feOffset dy="3" input="SourceAlpha"/>
                     <feGaussianBlur stdDeviation="3" result="blur-3"/>
-                    <feFlood flood-opacity="0.161" result="color-2"/>
+                    <feFlood floodOpacity="0.161" result="color-2"/>
                     <feComposite operator="out" in="SourceGraphic" in2="blur-3"/>
                     <feComposite operator="in" in="color-2"/>
                     <feComposite operator="in" in2="SourceGraphic"/>
@@ -560,26 +576,25 @@ function Octopus() {
                     animate='visable'
                     className='codeButton'
                     onClick={()=>{setIsCodeOpen(true)}}
-                    fill="#fff"  font-family="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan  x="46%" y="-19.5%">View My Code</tspan></motion.text>
+                    fill="#fff"  fontFamily="MarkerFelt-Thin, Marker Felt" font-weight="200"><tspan  x="46%" y="-19.5%">View My Code</tspan></motion.text>
                     </g>
                     <motion.text variants={codeText} 
                     initial='hidden' 
                     animate='visable'
                     className='codeButton'
                     onClick={()=>{setIsCodeOpen(true)}}
-                    stroke="none" stroke-width="1" f font-family="MarkerFelt-Thin, Marker Felt" font-weight="200" fill="none"><tspan  x="46%" y="-19.5%">View My Code</tspan></motion.text>
+                    stroke="none" stroke-width="1" fontFamily="MarkerFelt-Thin, Marker Felt" font-weight="200" fill="none"><tspan  x="46%" y="-19.5%">View My Code</tspan></motion.text>
                 </g>
             </motion.svg>
             
         </div>
         <LazyLoad height={350}>
-
                 <motion.iframe className="octupos-code"
                     variants={octopusCode}
                     initial="hidden"
                     animate={isCodeOpen? 'visable' : ''}
                     style={{width: '80%'}} scrolling="yes" title="octupos"
-                    src="https://codepen.io/ali-alsadiq/embed/preview/QWvKNLm?default-tab=js%2Cresult&editable=true&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+                    src="https://codepen.io/ali-alsadiq/embed/preview/QWvKNLm?default-tab=js%2Cresult&editable=true&theme-id=dark" frameBorder="no" loading="lazy" allowtransparency="true" allowFullScreen="true">
                     See the Pen <a href="https://codepen.io/ali-alsadiq/pen/QWvKNLm">
                     octupos</a> by Ali (<a href="https://codepen.io/ali-alsadiq">@ali-alsadiq</a>)
                     on <a href="https://codepen.io">CodePen</a>.

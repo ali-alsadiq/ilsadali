@@ -1,0 +1,97 @@
+.intro, .home-social{
+    text-align: center;
+    margin: 10px auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    font-size: 1.5rem;
+    .social-icon{
+    font-size:1.2rem;
+    }
+}
+.home-social{
+    position: relative;
+    top:-30px;
+}
+.project{
+    margin-bottom: 40px;
+    display: block;
+    z-index: 1;
+}
+
+.project-hide{
+    transition:20ms ;
+    z-index: 1;
+}
+.social-icon{
+    transform: scale(2);
+    margin:20px;
+    margin-right: 40px;
+    color:rgb(167, 92, 216);
+
+    &:hover{
+        color:rgb(188, 130, 216);
+    }
+}
+.icon{
+    transform: scale(1.2);
+    margin: 10px;
+    z-index: 99999;
+}
+.woo-icon{
+    color: rgb(162, 95, 228);
+}
+.wp-icon{
+    color:rgb(122, 158, 181);
+}
+.php-icon{
+    color: rgb(221, 187, 255);
+    transform: scale(2);
+    margin: 0 15px;
+    padding-bottom: 7px;
+}
+.js-icon{
+    color:rgb(244, 255, 128);
+}
+.react-icon{
+    color: rgb(139, 120, 174);
+}
+.ps-icon{
+    color:rgb(115, 115, 255);
+
+}
+.ai-icon{
+    color:rgb(176, 136, 61);
+}
+.xd-icon{
+    color:rgb(212, 88, 237);
+
+}
+.sass-icon{
+    color:pink;
+}
+.arrow{
+    float: right;
+    margin-right: 15px;
+    transform: scale(1.75);
+}
+.mail-icon{
+    transform: scale(2.4);
+}
+
+.info-icon{
+
+    svg{
+        transform: scale(1.2);
+        path{
+            stroke:white;
+            color:'white';
+            fill:white;
+        }
+       
+    }
+}
+.woo-icon{  
+    transform: scale(5);
+    padding-top: 1px;
+    margin-left: 50px;
+}
