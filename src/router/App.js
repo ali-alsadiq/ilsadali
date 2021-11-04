@@ -5,20 +5,23 @@ import Footer from '../components/Footer.js'
 import PageHome from '../pages/PageHome';
 import PageAbout from '../pages/PageAbout';
 import PageWork from '../pages/PageWork';
+import Page404 from '../pages/Page404'
+
 
 function App() {
   const location = useLocation();
   return (
     <>
-    
+
       <div className="wrapper">
         <main id="main-body">
-        <Header />
+          <Header />
           <AnimatePresence exitBeforeEnter >
             <Switch location={location} key={location.key} >
               <Route path='/' exact ><PageHome /></Route>
               <Route path='/about' ><PageAbout /></Route>
               <Route path='/work' ><PageWork /></Route>
+              <Route path='' ><Page404 /></Route>
             </Switch>
           </AnimatePresence>
         </main>

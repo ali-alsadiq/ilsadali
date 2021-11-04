@@ -1,73 +1,78 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import { motion } from "framer-motion";
-import * as FaIcons from "react-icons/fa";
-import * as BiIcons from "react-icons/bi";
 
 
-
-const logo ={
+const logo = {
     hidden: {
-        color:'black',
-        x:'25vw',
-        y:'25vh',
-        scale:3.6,
-        opacity:1,
+        color: 'black',
+        x: '4vw',
+        y: 20,
+        scale: 1.6,
+        opacity: 1,
     },
-    visable:{
-        scale:1.6,
-        opacity:[1,0.8],
-        x:['25vw','25vw','15vw','7vw','0vw'],
-        y:['25vh', '0vh'],
-        transition:{ 
-            duration:4,
-            type:'tween',
-            ease: 'easeOut',
+    visable: {
+        transition: {
+            delay: 1.5,
+            duration: 1,
+            type: 'tween',
         }
     },
-    logoHover:{
-        opacity:[0.6,1] , 
-        rotateZ:[-1,1],
-        scale:[1.5,1.6],  
-       
+    logoHover: {
+        opacity: [1, 0.7, 1],
+        scale: [1.6, 1.63, 1.6],
+        transition: {
+            duration: 1.3,
+            repeat: Infinity,
+        }
     }
 }
 const logoPath = {
-    hidden:{
-        pathLength:0
+    hidden: {
+        pathLength: 0
     },
-    visable:{
-        opacity:1,
-        pathLength:1,
-        transition:{
-            duration:4,
-            ease: 'easeOut'
+    visable: {
+        opacity: 1,
+        pathLength: 1,
+        transition: {
+            delay: .3,
+            duration: 1.3,
+            ease: 'easeIn'
+        }
+    },
+    visableDelayed: {
+        opacity: 1,
+        pathLength: 1,
+        transition: {
+            delay: 1.3,
+            duration: .5,
+            ease: 'easeIn'
         }
     }
 }
 const menuIcon = {
     hidden: {
-        x:'50vh', 
-        opacity:0,
+        x: '50vh',
+        opacity: 0,
     },
-    visable:{
-        scale:1,
-        x:0,
-        opacity:1,
-        transition:{
-            delay:5.3,
-            type:'spring', 
-            stiffness:50,
+    visable: {
+        scale: 1,
+        x: 0,
+        opacity: 1,
+        transition: {
+            delay: 1.5,
+            type: 'spring',
+            stiffness: 50,
             mass: .6,
-            damping:5
-        }        
+            damping: 5
+        }
     },
-    menuHover:{
-        opacity:[0.3,0.6,0.3] , 
-        originZ:0,
-        rotateZ:[0,-5,-10,-5,5,10,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        transition:{ 
+    menuHover: {
+        opacity: [0.8, 0.9, 1, 0.9, 0.8],
+        originZ: 0,
+        rotateZ: [0, -5, -10, -5, 5, 10, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        transition: {
             repeat: Infinity,
             duration: 1.2,
         }
@@ -75,78 +80,73 @@ const menuIcon = {
 }
 const top = {
     closed: {
-     originX:0.5,
-     originZ:0
+        originX: 0.5,
+        originZ: 0
     },
     opened: {
-      rotateZ: -45,
-     
+        rotateZ: -45,
+
     }
-  }
-  const center = {
+}
+const center = {
     closed: {
-        opacity:1,
-        y:0,
-    transition:{
-        duration:0.4,
-        ease: 'easeInOut',
-        type: 'spring', 
-        stiffness: 90
-    }
-  },
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.4,
+            ease: 'easeInOut',
+            type: 'spring',
+            stiffness: 90
+        }
+    },
     opened: {
-      opacity: 0,
-      y:'-100vh',
-        transition:{
-            duration:3.4,
+        opacity: 0,
+        y: '-100vh',
+        transition: {
+            duration: 3.4,
             ease: 'easeInOut'
         }
     }
 }
-  const bottom = {
+const bottom = {
     closed: {
-        originX:0.5,
-        originZ:0,
-        y:0
+        originX: 0.5,
+        originZ: 0,
+        y: 0
     },
     opened: {
-        y:12,
-      rotateZ: 45,
-  
+        y: 12,
+        rotateZ: 45,
+
     }
 }
 function NavBar() {
 
-    // code modified from https://www.youtube.com/watch?v=CXa0f4-dWi4&ab_channel=BrianDesignBrianDesign
-    const [sideBar, setSideBar]= useState(false);
+    const [sideBar, setSideBar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
 
-    function showSideBar (){
+    function showSideBar() {
         setSideBar(!sideBar);
-        setIsOpen (!isOpen);
+        setIsOpen(!isOpen);
 
-        let main= document.getElementById("main-body");
+        let main = document.getElementById("main-body");
         main.classList.add(`${!sideBar}`);
         main.classList.remove(`${sideBar}`);
     }
-
     return (
         <>
-            <div className ='navbar'>
-                <NavLink className='logo-container' to='/'>
-                    <motion.svg className="logo"  
+            <div className='navbar'>
+                <NavLink className='logo-container' onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }} to='/'>
+                    <motion.svg className="logo"
                         variants={logo}
                         initial='hidden'
                         animate='visable'
-                        whileHover='logoHover' 
-                        id="Layer_1" data-name="Layer 1" style={{ marginLeft:' 50px' }} width="80" height="28" viewBox="0 0 120.17 27.8" stroke-miterlimit='10' stroke-width='0.09px'>
-                        <motion.path variants={logoPath} className="cls-1" d="M1288.77,364.16a1.19,1.19,0,0,0-.87-1.58,1.27,1.27,0,0,0-.28,0h-1a3,3,0,0,1-1.63-.32,1.17,1.17,0,0,1-.46-1.05,1.23,1.23,0,0,1,.41-1.07,4.81,4.81,0,0,1,2.23-.3h5.42a2.56,2.56,0,0,1,1.41.27,2.4,2.4,0,0,1,.68,1l7.37,18.43a.24.24,0,0,0,.22.15h.17a2.46,2.46,0,0,1,1.4.28,1.19,1.19,0,0,1,.38,1,1.31,1.31,0,0,1-.36,1.07,2.2,2.2,0,0,1-1.35.3h-5.17a3.61,3.61,0,0,1-1.85-.3,1.23,1.23,0,0,1-.41-1.07,1.13,1.13,0,0,1,.45-1,3.41,3.41,0,0,1,1.68-.29h0a1.19,1.19,0,0,0,1.17-1.39.84.84,0,0,0-.08-.27l-.86-2.12a1.2,1.2,0,0,0-1.11-.74h-8a1.19,1.19,0,0,0-1.12.78l-.77,2.15a1.19,1.19,0,0,0,.87,1.57,1.27,1.27,0,0,0,.28,0h.11a3.36,3.36,0,0,1,1.71.3,1.09,1.09,0,0,1,.46,1,1.27,1.27,0,0,1-.41,1.08,3.58,3.58,0,0,1-1.79.29h-5c-.82,0-4.7,2.42-5,2.22s2.95-3.07,2.95-3.59a1.22,1.22,0,0,1,.4-1,2.89,2.89,0,0,1,1.54-.28h.21a.23.23,0,0,0,.21-.15Zm1.33,8.47h4.32a1.19,1.19,0,0,0,1.18-1.2,1.32,1.32,0,0,0-.08-.44l-2.27-5.58a1.18,1.18,0,0,0-1.55-.65,1.14,1.14,0,0,0-.66.68l-2,5.59a1.18,1.18,0,0,0,.71,1.52A1.14,1.14,0,0,0,1290.1,372.63Z" transform="translate(-1277.6 -356.83)"/>
-                        <motion.path variants={logoPath} className="cls-1" d="M1312,379.24a3.15,3.15,0,0,1,1-2.43,3.78,3.78,0,0,1,2.69-.95,3.92,3.92,0,0,1,2.72.93,3.44,3.44,0,0,1,0,4.91,4.4,4.4,0,0,1-5.41,0A3.18,3.18,0,0,1,1312,379.24Z" transform="translate(-1277.6 -356.83)"/>
-                        <motion.path variants={logoPath} className="cls-1" d="M1338.87,372.38a.24.24,0,0,0,.44,0l3.87-11.28a2,2,0,0,1,.73-1,2.39,2.39,0,0,1,1.34-.31h3.12a1.2,1.2,0,0,1,.92.33,1.34,1.34,0,0,1,.32,1,1.14,1.14,0,0,1-.39,1,2.69,2.69,0,0,1-1.44.28h-.06a.22.22,0,0,0-.23.23l.51,16.84a.23.23,0,0,0,.23.23h.21a3.41,3.41,0,0,1,1.66.27,1.16,1.16,0,0,1,.42,1,1.41,1.41,0,0,1-.34,1,1.34,1.34,0,0,1-1,.35h-5.34a2.59,2.59,0,0,1-1.51-.31,1.26,1.26,0,0,1-.4-1.06,1.11,1.11,0,0,1,.48-1,4,4,0,0,1,1.82-.28h.59a.23.23,0,0,0,.23-.24l-.36-14.83a.23.23,0,0,0-.45-.07l-3.35,9.72a2.36,2.36,0,0,1-.7,1.11,2.17,2.17,0,0,1-1.26.3,2,2,0,0,1-1.22-.32,2.22,2.22,0,0,1-.68-1.09l-3.4-9.72a.23.23,0,0,0-.45.07l-.31,14.84a.23.23,0,0,0,.23.23h1a2.93,2.93,0,0,1,1.58.31,1.1,1.1,0,0,1,.46,1,1.28,1.28,0,0,1-.4,1.07,2.71,2.71,0,0,1-1.52.3h-5.33a1.33,1.33,0,0,1-1-.34,1.43,1.43,0,0,1-.33-1,1.14,1.14,0,0,1,.42-1,3.25,3.25,0,0,1,1.65-.28h.2a.22.22,0,0,0,.23-.22l.54-16.84a.23.23,0,0,0-.23-.24h-.07a2.64,2.64,0,0,1-1.44-.28,1.14,1.14,0,0,1-.41-1,1.3,1.3,0,0,1,.33-1,1.23,1.23,0,0,1,.93-.33h3.12a2.48,2.48,0,0,1,1.34.31,1.79,1.79,0,0,1,.71,1Z" transform="translate(-1277.6 -356.83)"/>
-                        <motion.path variants={logoPath} className="cls-1" d="M1358.7,379.24a3.14,3.14,0,0,1,1-2.43,3.8,3.8,0,0,1,2.69-.95,3.9,3.9,0,0,1,2.72.93,3.43,3.43,0,0,1,0,4.91,4.4,4.4,0,0,1-5.41,0A3.18,3.18,0,0,1,1358.7,379.24Z" transform="translate(-1277.6 -356.83)"/>
-                        <motion.path variants={logoPath} className="cls-1" d="M1380.51,381.82a.23.23,0,0,0-.32.17,1.57,1.57,0,0,1-.39.89,1.48,1.48,0,0,1-1.09.34,1.45,1.45,0,0,1-1.18-.47,2.58,2.58,0,0,1-.45-1.51l-.25-4.41h0v-.33a1.94,1.94,0,0,1,.35-1.3,1.57,1.57,0,0,1,1.17-.38c.77,0,1.31.55,1.64,1.64a6.67,6.67,0,0,0,.44,1.23,4.56,4.56,0,0,0,2.1,2.06,7.55,7.55,0,0,0,3.43.72,6.44,6.44,0,0,0,4-1.16,3.58,3.58,0,0,0,1.53-3,3.19,3.19,0,0,0-.94-2.41,4.86,4.86,0,0,0-2.74-1.18l-2.82-.38a11.26,11.26,0,0,1-5.74-2.07,5.3,5.3,0,0,1-1.81-4.28,6.07,6.07,0,0,1,2.41-4.88,9.72,9.72,0,0,1,8.2-1.7,17.36,17.36,0,0,1,2.35.75.23.23,0,0,0,.31-.16.8.8,0,0,1,.27-.49,1.5,1.5,0,0,1,.91-.21,1.93,1.93,0,0,1,1.16.25c.17.13,3.16-2.1,4.37-2.67a.23.23,0,0,1,.3.31l-4,7.46a.2.2,0,0,0,0,.11v.13a1.37,1.37,0,0,1-.38,1,1.5,1.5,0,0,1-1.07.38c-.67,0-1.19-.47-1.55-1.4v0a5.17,5.17,0,0,0-.52-1.18v0a3.94,3.94,0,0,0-1.8-1.45,6.67,6.67,0,0,0-2.68-.52,5.85,5.85,0,0,0-3.74,1.14,3.67,3.67,0,0,0-1.43,3,2.75,2.75,0,0,0,1.07,2.28,6.86,6.86,0,0,0,3.28,1.14l3,.38a8.74,8.74,0,0,1,5,2,5.63,5.63,0,0,1,1.67,4.28,6.27,6.27,0,0,1-2.38,5.13,9.8,9.8,0,0,1-6.35,1.93,11.37,11.37,0,0,1-2.72-.33A15.91,15.91,0,0,1,1380.51,381.82Z" transform="translate(-1277.6 -356.83)"/>
-                    </motion.svg>                                    
+                        whileHover='logoHover'
+                        id="Layer_1" data-name="Layer 1" width="44" height="34" viewBox="0 0 238 190.18" stroke-miterlimit='10' stroke-width='0.09px'>
+                        <motion.path variants={logoPath} initial='hidden' animate='visable' class="cls-1" d="M261.32,128.25a23.22,23.22,0,0,1-10,4.85c-2.76.63-5.6.43-7-.69-3.72-3.22-2.42-8.06-3.08-12.15a157.79,157.79,0,0,1,2-19.68c.22-.63.45-1.27.66-1.91,1.12-4,3-8,3-11.91-1.16-1.86-6.77-.81-9.89,0-2.45.64-5.35,1.68-6.53,3.17a5.54,5.54,0,0,0-1.07,2.55c-.19,1-.33,1.92-.45,2.87-5.06,14.39-14.5,34.4-23,50.15-3,5.6-8.89,14.64-12.6,18.41a8.74,8.74,0,0,1-2.23-1.6c-4.58-10.36-4.85-21.87-3.69-33.4a112.44,112.44,0,0,1,2.35-13.83c4.9-8.16,32.65-101.15,35.61-109.3,1.06-2.14-11.46.4-15.06,2.34C207,10,179.61,94.62,178.75,96.9a86.58,86.58,0,0,0-2.87,8.28c-1.29,4.19-2.46,8.38-3.45,12.57-2.64,4.49-5.46,9-8.61,13.45-7.09,9.21-15.22,19.82-23.17,25.54-1.18-5.2-2.41-10.38-3.33-15.64-1-7.57-2-15.16-2.93-22.76.1.1.19.21.29.32.88,1,1.13,1.75.78,0a2,2,0,0,0-1.25-1.76c-1.13-9.27-2.24-18.55-3.4-27.81a268.87,268.87,0,0,1,.3-42.92c.2-4.1.46-8.2.64-12.28-.09-2.53,1.27-5.68-1.64-7.39-3.83-1.64-14.48.94-17.07,3.94-3.4,7.49-6.07,15-9.23,22.45-8.08,17.33-15.34,34.66-22.78,52C75,119,68.24,133.19,62.47,147.34a30.73,30.73,0,0,1-4.09,1c-3.47.64-4-3.43-5.11-6.16-.76-3.47-2-6.91-1.53-10.61l-.13,0a2.17,2.17,0,0,0,0-.26,3.77,3.77,0,0,0-2.78.69A13.7,13.7,0,0,0,47,136.71a32.13,32.13,0,0,0-1.16,10.5c-.35,3.54,2.25,5.27,8.73,4.66a58.12,58.12,0,0,0,6.49-1.05c-.36,3.54-14.86,30.86-19.75,29.61-7.22-1.85-5-27.35-6.16-27.35-1.4,0-7.77,38.41,1.39,41.83,5.46,2,17.35-8.07,43.41-51,2.45-1.22,4.82-2.5,7.09-3.79,10.11-5.37,19.43-11.37,29.79-16.58.52,4,1,8,1.51,12a149,149,0,0,0,3.39,20c.45,1.91.86,3.83,1.3,5.74a3.48,3.48,0,0,0,2.9,3.06c2.94.79,7,.22,10.59-.39a46.1,46.1,0,0,0,21.67-9.65,114.43,114.43,0,0,0,10.92-10.7,70.06,70.06,0,0,0,1,11.43c.55,2.86,1.32,5.68,2.11,8.49.55,3.68,4.27,6.81,10.9,7.13,7.2.1,16-1.49,22.18-5.07,4.73-2.72,7.18-6.2,9.74-9.45,6.68-9.34,11.16-18.79,16.07-28.19l.8-1.7c1,2.93,2,5.94,5.32,8,5.57,3.11,17.91.46,23.91-3.92a49,49,0,0,0,8.59-9.16A93.65,93.65,0,0,1,261.32,128.25ZM82.81,137.54c4.48-10.08,8.87-20.16,13.39-30.24q8-18.75,16.13-37.52c-.24,17.53,2,34.63,4.23,51.72C104.62,126.14,93.66,131.85,82.81,137.54Z" transform="translate(-31.69 -4.97)" />
+                        <motion.path variants={logoPath} initial='hidden' animate='visableDelayed' class="cls-1" d="M255.87,67.33a20.89,20.89,0,0,0-9.13,2.74c2.81-1,6.76-2.63,9.07-1.45.26,1-1.24,2.24-2.1,3.29-1.68,2.11-6.44,3.63-9.15,4.36l-.48.12h0c-2.22-.78-4-2.11-4.16-3.78-.5-1.65,2.1-3.26,4.46-4.5a37.58,37.58,0,0,1,15-3.74c-5.92-.44-12.88,1.23-18.54,3.71-3.7,1.61-7.44,3.89-7,6.33s3.69,5.17,9,4.08c4.73-1,9.77-2.69,13.33-5.06,2-1.59,3.3-3.54,3.27-5.21C259.13,67.33,257.29,67.3,255.87,67.33Z" transform="translate(-31.69 -4.97)" />
+                    </motion.svg>
                 </NavLink>
 
                 <button className='menu-bars'>
@@ -157,37 +157,36 @@ function NavBar() {
                         animate='visable'
                         whileHover='menuHover'
                         width="40" height="60" viewBox="0 0 35.63 31.49" stroke-width='2' stroke-miterlimit='10'>
-                        <motion.rect variants={top} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="12.33" width="34.63" height="6.83" rx="3.42"/>
-                        <motion.rect variants={center} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="24.16" width="34.63" height="6.83" rx="3.42"/>
-                        <motion.rect variants={bottom} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="0.5" width="34.63" height="6.83" rx="3.42"/>
+                        <motion.rect variants={top} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="12.33" width="34.63" height="6.83" rx="3.42" />
+                        <motion.rect variants={center} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="24.16" width="34.63" height="6.83" rx="3.42" />
+                        <motion.rect variants={bottom} initial='closed' animate={isOpen ? "opened" : "closed"} className="cls-1" x="0.5" y="0.5" width="34.63" height="6.83" rx="3.42" />
                     </motion.svg>
                 </button>
             </div>
-            
-            <nav className={sideBar ? 'nav-menu active': 'nav-menu'}>
+
+            <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items' onClick={showSideBar}>
-                    {SidebarData.map((item, index)=>{
-                        return(
+                    {SidebarData.map((item, index) => {
+                        return (
                             <li key={index} className={item.cName}>
-                                <NavLink to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </NavLink>
+                                {item.title !== 'Contact' ?
+                                    <NavLink onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }} to={item.path}>
+                                        <span>{item.icon} &nbsp;&nbsp; {item.title}</span>
+                                    </NavLink>
+                                    :
+                                    <a href={item.path} target="_blank" rel="noopener noreferrer">
+                                        <span>{item.icon}  &nbsp;&nbsp; {item.title}</span>
+                                    </a>
+                                }
                             </li>
                         )
                     })}
-                    <a href="https://github.com/ali-alsadiq" target="_blank" rel="noopener noreferrer">
-                        <FaIcons.FaGithub className="social-icon"></FaIcons.FaGithub>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ilsadali/" target="_blank" rel="noopener noreferrer">
-                        <FaIcons.FaLinkedinIn className="social-icon"></FaIcons.FaLinkedinIn>
-                    </a>
-                    <a href='mailto:ali6254@gmail.com'><BiIcons.BiMailSend className='social-icon mail-icon'/></a>
-                    {/* <a href="https://codepen.io/ali-alsadiq">
-                        <FaIcons.FaCodepen className="social-icon"></FaIcons.FaCodepen>
-                    </a> */}
                 </ul>
             </nav>
+            <div className={sideBar ? "nav-background" : "nav-background-hidden"}
+                onClick={showSideBar}>
+
+            </div>
 
         </>
     )

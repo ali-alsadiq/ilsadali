@@ -1,17 +1,3 @@
-.intro, .home-social{
-    text-align: center;
-    margin: 10px auto;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    font-size: 1.5rem;
-    .social-icon{
-    font-size:1.2rem;
-    }
-}
-.home-social{
-    position: relative;
-    top:-30px;
-}
 .project{
     margin-bottom: 40px;
     display: block;
@@ -34,7 +20,7 @@
 }
 .icon{
     transform: scale(1.2);
-    margin: 10px;
+    margin: 2px 1px 0 1px ;
     z-index: 99999;
 }
 .woo-icon{
@@ -75,19 +61,13 @@
     transform: scale(1.75);
 }
 .mail-icon{
-    transform: scale(2.4);
+    transform: scale(1.5);
 }
 
 .info-icon{
 
     svg{
         transform: scale(1.2);
-        path{
-            stroke:white;
-            color:'white';
-            fill:white;
-        }
-       
     }
 }
 .woo-icon{  

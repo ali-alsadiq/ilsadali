@@ -2,23 +2,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
 /* 
 
-font-family: 'Sarabun', sans-serif;
+font-family:     'Courier New', Courier, monospace;;
 
 */
 
 
 body {
-    font-family:'Courier New', Courier, monospace;
-    color: #FFFFFF;
+    font-family: 'Sarabun', sans-serif;
+    color: $textColor;
 }
 
 h1, h2, h3, nav a {
     font-family: 'Noto Sans JP', sans-serif;}
 
 h1 {
-    font-weight: 300;
+    // font-weight: 300;
 }
-
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+button{
+    margin: 0;
+    padding: 0;
+}
 
 .letter{
     padding: 0;
@@ -28,6 +35,36 @@ h1 {
 .arrow-code{
     height: 350px;
 }
-.development{
-    margin-top:40px;
+.page-links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    a{
+        div{
+            color: $silver;
+            border: 1px solid $silver;
+            border-radius: 7px;
+            padding: 10px 25px;
+            width: 200px;
+            text-align: center;
+            margin: 5px 20px;
+            transition: ease;
+            transition-duration: 400ms;
+            font-size: 1.25rem;
+            @media only screen and (min-width: 600px){
+                font-size: 1.5rem;
+                padding: 15px 35px;
+                width: 220px;
+            }
+        }
+        
+        &:hover{
+            div{
+                color: rgb(241, 223, 182);
+                transform: scale(1.03);
+                transition: ease-out;
+                transition-duration: 400ms;
+            }
+        }
+    }
 }
