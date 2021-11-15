@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import logoState from '../local_storage/logoState';
-import * as FaIcons from "react-icons/fa";
-import * as DiIcons from "react-icons/di";
-import * as SiIcons from "react-icons/si";
+// import * as FaIcons from "react-icons/fa";
+// import * as DiIcons from "react-icons/di";
+// import * as SiIcons from "react-icons/si";
 import * as BiIcons from "react-icons/bi";
 
 import { NavLink } from 'react-router-dom';
@@ -31,10 +31,11 @@ function PageAbout() {
             {(isLogoVisable === 'true' ?
 
                 <motion.section className="page-section page-about"
-                    initial={{ scale: 0, opacity: 0, x: '45vw' }}
-                    animate={{ scale: [0, 0.3, 0.3, 0.3, 1], opacity: 1, x: 0 }}
-                    transition={{ type: 'tween', duration: 0.5 }}
-                    exit={{ scale: [1, 0.3, 0.3, 0.3, 0.0], opacity: 0, x: '-45vw', transition: { duration: 0.5 } }}>
+                    initial={{ scale: 0, opacity: 0, y: '-30vh' }}
+                    animate={{ scale: [0, 0.5, 0.5, 0.5, 1], opacity: 1, y: 0 }}
+                    transition={{ type: 'tween', duration: 0.6 }}
+                    exit={{ scale: [1, 0.5, 0.5, 0.5, 0.0], opacity: 0, y: '20vh', transition: { duration: 0.5 } }}>
+
 
 
                     <section className="intro">

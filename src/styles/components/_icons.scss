@@ -19,21 +19,22 @@
     }
 }
 .icon{
-    transform: scale(1.2);
-    margin: 2px 1px 0 1px ;
+    transform: scale(1.5);
     z-index: 99999;
+    display: inline-block;
+    margin: 0 20px;
 }
 .woo-icon{
     color: rgb(162, 95, 228);
+    transform: scale(7);
+    margin: 0 50px;
 }
 .wp-icon{
-    color:rgb(122, 158, 181);
+    color:rgb(78, 165, 223);
 }
 .php-icon{
-    color: rgb(221, 187, 255);
-    transform: scale(2);
-    margin: 0 15px;
-    padding-bottom: 7px;
+    color:rgb(115, 115, 255);
+    transform: scale(3.5);
 }
 .js-icon{
     color:rgb(244, 255, 128);
@@ -49,11 +50,11 @@
     color:rgb(176, 136, 61);
 }
 .xd-icon{
-    color:rgb(212, 88, 237);
-
+    color:rgb(150, 37, 140);
+    transform: scale(1.5);
 }
 .sass-icon{
-    color:pink;
+    color:rgb(196, 28, 182);
 }
 .arrow{
     float: right;
@@ -69,9 +70,4 @@
     svg{
         transform: scale(1.2);
     }
-}
-.woo-icon{  
-    transform: scale(5);
-    padding-top: 1px;
-    margin-left: 50px;
 }

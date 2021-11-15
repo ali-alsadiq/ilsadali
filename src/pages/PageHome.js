@@ -19,7 +19,7 @@ const sentence = {
 
 function PageHome() {
     useEffect(() => {
-        document.title = 'Ali Alsadiq | Front-End Web Developer';
+        document.title = 'Ali Alsadiq | Web Developer';
     });
 
     const logoStateAndActions = logoState();
@@ -41,10 +41,10 @@ function PageHome() {
 
                 <motion.section
                     className='home-section'
-                    initial={{ scale: 0, opacity: 0, x: '45vw' }}
-                    animate={{ scale: [0, 0.3, 0.3, 0.3, 1], opacity: 1, x: 0 }}
-                    transition={{ type: 'tween', duration: 0.5 }}
-                    exit={{ scale: [1, 0.3, 0.3, 0.3, 0.0], opacity: 0, x: '-45vw', transition: { duration: 0.5 } }}>
+                    initial={{ scale: 0, opacity: 0, y: '-35vh' }}
+                    animate={{ scale: [0, 0.5, 0.5, 0.5, 1], opacity: 1, y: 0 }}
+                    transition={{ type: 'tween', duration: 0.6 }}
+                    exit={{ scale: [1, 0.5, 0.5, 0.5, 0.0], opacity: 0, y: '30vh', transition: { duration: 0.5 } }}>
 
                     <motion.p
                         className="intro"

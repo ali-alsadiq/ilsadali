@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import logoState from '../local_storage/logoState';
 import * as FaIcons from "react-icons/fa";
-import portfolio from '../images/portfolioMockup.png'
-import simplePleasures from '../images/ss.png'
-import moviena from '../images/moviena.png'
 import * as RiIcons from "react-icons/ri";
+import * as BiIcons from "react-icons/bi";
+import { ProjectsData } from '../data/ProjectsData';
 
 
 
@@ -32,111 +31,56 @@ function PageWork() {
         <>
             {(isLogoVisable === 'true' ?
                 <section className='page-section'>
-
                     <motion.section className="projects-page"
-                        initial={{ scale: 0, opacity: 0, x: '45vw' }}
-                        animate={{ scale: [0, 0.3, 0.3, 0.3, 1], opacity: 1, x: 0 }}
-                        transition={{ type: 'tween', duration: 0.5 }}
-                        exit={{ scale: [1, 0.3, 0.3, 0.3, 0.0], opacity: 0, x: '-45vw', transition: { duration: 0.5 } }}>
+                        initial={{ scale: 0, opacity: 0, y: '-100vh' }}
+                        animate={{ scale: [0, 0.5, 0.5, 0.5, 1], opacity: 1, y: 0 }}
+                        transition={{ type: 'tween', duration: 0.6 }}
+                        exit={{ scale: [1, 0.5, 0.5, 0.5, 0.0], opacity: 0, y: ['-50vh', '50vh'], transition: { duration: 0.5 } }}>
 
+                        {ProjectsData.map((project, index) => {
+                            return (
+                                <section key={index} className={project.section_Cname}>
+                                    <div className="project-container">
 
-                        <h2 className="projects-heading">
-                            Featured Projects
-                        </h2>
-                        <motion.section className="project-section portfolio-section">
-
-                            <motion.div
-                                className="project-container">
-                                <div className="project-info">
-                                    <h2>Portfolio</h2>
-                                </div>
-                                <div>
-                                    <img className="project-image" src={portfolio} alt="portfolio" />
-                                    <p className='project-tools'>React | SASS | XD | Illustrator | Photoshop</p>
-                                </div>
-
-
-                                <div className='links-container'>
-                                    <a className='project-links' href="https://github.com/ali-alsadiq/ilsadali" target="_blank" rel="noopener noreferrer">
-                                        <div>
-                                            <FaIcons.FaGithub className="social-icon" />
-                                            View Code
+                                        <div className="project-info">
+                                            <h2>{project.title}</h2>
                                         </div>
-                                    </a>
 
-                                    {/* <Link className='project-links' to='/'>
-                                        <div >
-                                            <RiIcons.RiComputerLine className='comp-icon social-icon' />
-                                            Live Site
+                                        <div className="project-image">
+                                            <img src={project.image} alt="project mockup" />
+                                            <p className="project-tools">{project.tools}</p>
                                         </div>
-                                    </Link> */}
-                                </div>
 
-                            </motion.div>
+                                        <div className='links-container'>
+                                            <p>{project.overview}</p>
 
+                                            <a className='project-links' href={project.github_link} target="_blank" rel="noopener noreferrer">
+                                                <FaIcons.FaGithub className="social-icon" />
+                                            </a>
+                                            {project.site_link !== null &&
+                                                <a className='project-links' href={project.site_link} target="_blank" rel="noopener noreferrer">
+                                                    <RiIcons.RiComputerLine className='comp-icon social-icon' />
+                                                </a>
+                                            }
+                                            {project.caseStudy_link !== null &&
+                                                <Link className='project-links' to={project.caseStudy_link}>
+                                                    <div >
+                                                        <BiIcons.BiDetail className='comp-icon social-icon' />
+                                                    View Details
+                                                </div>
+                                                </Link>
+                                            }
 
-                        </motion.section>
-
-                        <motion.section className="project-section moviena-section">
-                            <motion.div className="project-container">
-
-                                <div className="project-info">
-                                    <h2>Moviena</h2>
-                                </div>
-                                <div>
-                                    <img src={moviena} alt="" />
-                                    <p className='project-tools'>React | SASS | XD | Illustrator | Photoshop</p>
-                                </div>
-                                <div className='moviena-links links-container'>
-                                    <a className='project-links' href="https://github.com/ali-alsadiq/moviena/" target="_blank" rel="noopener noreferrer">
-                                        <div >
-                                            <FaIcons.FaGithub className="social-icon" />
-                                            View Code
                                         </div>
-                                    </a>
-                                    <a className='project-links' href='https://ilsadali.com/moviena/' target="_blank" rel="noopener noreferrer">
-                                        <div >
-                                            <RiIcons.RiComputerLine className='comp-icon social-icon' />
-                                            Live Site
-                                        </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                </section>
 
-                            </motion.div>
-                        </motion.section>
-
-                        <motion.section className="project-section capstone-section">
-                            <motion.div className="project-container">
-                                <div className='project-info'>
-                                    <h2>Simple Pleasures</h2>
-                                </div>
-                                <div>
-                                    <img src={simplePleasures} alt="" />
-                                    <p className='project-tools'>WordPress | WooCommerce | XD | Illustrator | Photoshop</p>
-                                </div>
-
-                                <div className='links-container'>
-                                    <a className='project-links' href="https://github.com/htpwebdesign/simple-pleasures" target="_blank" rel="noopener noreferrer">
-                                        <div >
-                                            <FaIcons.FaGithub className="social-icon" />
-                                            View Code
-                                        </div>
-                                    </a>
-
-
-
-                                    <a className='project-links' href='https://simplepreasures.bcitwebdeveloper.ca/' target="_blank" rel="noopener noreferrer">
-                                        <div  >
-                                            <RiIcons.RiComputerLine className='comp-icon social-icon' />
-                                            Live Site
-                                        </div>
-                                    </a>
-                                </div>
-
-                            </motion.div>
-                        </motion.section>
-
+                            )
+                        })
+                        }
                     </motion.section>
+
+
                 </section>
 
                 : toggleVisabitly())}
